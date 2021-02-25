@@ -14,4 +14,6 @@ import com.chilli.model.City;
 public interface CityService {
 
   public List<City> getAllCity();
+
+  public City getDanangCity(String strCityId);
 }

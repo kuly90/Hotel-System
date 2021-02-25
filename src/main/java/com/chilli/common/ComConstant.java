@@ -64,9 +64,6 @@ public class ComConstant {
 
   /* page index */
   public static final String KEY_CHILLI_CUS_INDEX_PAGE = "CHILLI_CUS_INDEX_PAGE";
-  
-  /* page product detail */
-  public static final String KEY_CHILLI_CUS_PRODUCT_DETAIL_PAGE = "CHILLI_CUS_PRODUCT_DETAIL_PAGE";
 
   // Code for hotel system
 
@@ -84,4 +81,7 @@ public class ComConstant {
   
   /* page error */
   public static final String KEY_CHILLI_ERROR_400_PAGE = "CHILLI_ERROR_400_PAGE";
+
+  /* Da Nang City Id */
+  public static final String KEY_DANANG_CITY = "DANANG_CITY";
 }

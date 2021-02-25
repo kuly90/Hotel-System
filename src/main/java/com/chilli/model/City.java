@@ -43,10 +43,10 @@ public class City  implements Serializable{
   @OneToMany(mappedBy = "city")
   private List<ImageBanner> lstBanner;
 
-/**
- * get List hotel in city
- * @return lstHotel
- */
+  /**
+  * get List hotel in city
+   * @return lstHotel
+   */
   public List<Hotel> getLstHotel() {
     return lstHotel;
 }
@@ -59,7 +59,7 @@ public class City  implements Serializable{
     this.lstHotel = lstHotel;
 }
 
-/**
+  /**
    * get about of city
    * @return cityDesc
    */
@@ -75,7 +75,7 @@ public class City  implements Serializable{
     this.cityDesc = cityDesc;
 }
 
-/**
+  /**
    * Get City Id
    * @return City Id
    */

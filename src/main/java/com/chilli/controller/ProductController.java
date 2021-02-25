@@ -1,7 +1,6 @@
 package com.chilli.controller;
 
-import static com.chilli.common.ComConstant.KEY_CHILLI_CUS_INDEX_PAGE;
-import static com.chilli.common.ComConstant.KEY_CHILLI_CUS_PRODUCT_DETAIL_PAGE;
+import static com.chilli.common.ComConstant.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -154,9 +153,9 @@ public class ProductController {
     model.addAttribute("category", category);
 
     // get index page
-    String productDetailPage = appUti.getProperty(KEY_CHILLI_CUS_PRODUCT_DETAIL_PAGE);
+    //String productDetailPage = appUti.getProperty(KEY_CHILLI_CUS_PRODUCT_DETAIL_PAGE);
 
-      return productDetailPage;
+      return "";
     }
 
 }

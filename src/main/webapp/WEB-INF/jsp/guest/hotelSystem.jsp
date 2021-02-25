@@ -20,17 +20,6 @@ Version: 1.0.0 2021-03-01
     <meta name="keywords" content="Đặt phòng Khách sạn, resort, du lịch, nghỉ dưỡng , booking room hotel, Travel Đà Nẵng" />
     <meta name="author" content="Mr. Ton That Cu Ly" />
 
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
-
     <link rel="icon" href="${contextPath}/resources/images/CLO.png" type="image/gif" sizes="20x20">
   
     <!-- Stylesheets -->
@@ -129,18 +118,15 @@ Version: 1.0.0 2021-03-01
         <div class="row">
           <div id="availability">
             <form action="#">
-  
               <div class="a-col">
                 <section>
                   <select class="cs-select cs-skin-border">
                     <option value="" disabled selected>Thành phố</option>
-                    <c:forEach var = "city" items = "lstCity">
-<%--                       <option value="${city.cityId}">${city.cityName}</option> --%>
+                    <c:forEach var = "city" items = "${lstCity}">
+                      <option value="${city.cityId}">
+                        ${city.cityName}
+                      </option>
                     </c:forEach>
-<!--                     <option value="email">Hà Nội</option> -->
-<!--                     <option value="twitter">Huế</option> -->
-<!--                     <option value="linkedin">Đà Nẵng</option> -->
-<!--                     <option value="linkedin">Hồ Chí Minh</option> -->
                   </select>
                 </section>
               </div>
@@ -152,6 +138,11 @@ Version: 1.0.0 2021-03-01
                     <option value="email">Khách Sạn 2 sao</option>
                     <option value="email">Khách Sạn 3 sao</option>
                     <option value="email">Khách Sạn 4 sao</option>
+                    <option value="email">Khách Sạn 5 sao</option>
+                    <option value="email">Resort 1 sao</option>
+                    <option value="email">Resort 2 sao</option>
+                    <option value="email">Resort 3 sao</option>
+                    
                   </select>
                 </section>
               </div>
@@ -192,116 +183,29 @@ Version: 1.0.0 2021-03-01
   
         <div class="row">
           <div class="feature-full-1col">
-            <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            <div class="image" style="background-image: url(../../../resources/images/hotelSystem/${ctDanang.cityImage});">
               <div class="descrip text-center">
                 <p><small>For as low as</small><span>$100/night</span></p>
               </div>
               <div class= "city">
-                  <p><span>Phú Quốc</span></p>
+                  <p><span>&nbsp;${ctDanang.cityName}</span></p>
               </div>
             </div>
           </div>
           <div class="feature-full-3col">
-            <div class="f-hotel">
-             <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Phú Quốc</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Hội An</span></p>
+            <c:forEach var = "city" items="${lstCity}">
+              <div class="f-hotel">
+                <div class="image" style="background-image: url(../../../resources/images/hotelSystem/${city.cityImage});">
+                  <div class="descrip text-center">
+                    <p><small>For as low as</small><span>$99/night</span></p>
+                  </div>
+                  <div class= "city">
+                    <p><span>&nbsp;${city.cityName}</span></p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Tp Huế</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>TP Hồ Chí Minh</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Hà Nội</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Hà Nội</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Hà Nội</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Hà Nội</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Hà Nội</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="f-hotel">
-              <div class="image" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-                <div class="descrip text-center">
-                  <p><small>For as low as</small><span>$99/night</span></p>
-                </div>
-                <div class= "city">
-                  <p><span>Hà Nội</span></p>
-                </div>
-              </div>
-            </div>
+            </c:forEach>
+            
           </div>
         </div>
       </div>

@@ -8,7 +8,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -80,8 +79,19 @@ public class MainController {
     // Bring list image banner to layout
     model.addAttribute("lstBanner", lstBanner);
 
+    // get Da nang City
+    City ctDanang = cityServ.getDanangCity(appUti.getProperty(KEY_DANANG_CITY));
+    //bring danang city to layout
+    model.addAttribute("ctDanang", ctDanang);
+
     // get All City
     List<City> lstCity = cityServ.getAllCity();
+    lstCity.remove(ctDanang);
+//    for (int i = 0; i < lstCity.size(); i++) {
+//      if (appUti.getProperty(KEY_DANANG_CITY).equals(lstCity.get(i).getCityId())) {
+//        
+//      }
+//    }
     // bring list City to layout
     model.addAttribute("lstCity", lstCity);
 

@@ -23,9 +23,11 @@ public class CityServiceImpl implements CityService{
   @Autowired
   CityRepository cityrepo;
 
+  /**
+   * get All city
+   */
   @Override
   public List<City> getAllCity(){
-
     // new instant Array List of City
     List<City> lstCity = new ArrayList<City>();
 
@@ -33,5 +35,20 @@ public class CityServiceImpl implements CityService{
     lstCity = (List<City>) cityrepo.findAll();
 
     return lstCity;
+  }
+
+  /**
+   * get Danang City
+   * @param strCityId
+   * @return ctDanang
+   */
+  @Override
+  public City getDanangCity(String strCityId) {
+    // new instant of City
+    City ctDanang = new City();
+    //get Danang City
+    ctDanang = cityrepo.findOne(strCityId);
+
+    return ctDanang;
   }
 }
