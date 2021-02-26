@@ -23,7 +23,9 @@ public class ImageBanner implements Serializable {
   @Column(name="IMAGE_BANNER_URL")
   private String imageBannerUrl;
 
-
+  /* language */
+  @Column(name = "LANGUAGE")
+  private String language;
 
   /* Content */
   @Column(name = "IMAGE_BANNER_CONTENT")
@@ -34,6 +36,22 @@ public class ImageBanner implements Serializable {
   private City city;
 
   /**
+   * get language
+   * @return language
+   */
+  public String getLanguage() {
+    return language;
+}
+
+  /**
+   * Set language
+   * @param language
+   */
+  public void setLanguage(String language) {
+    this.language = language;
+ }
+
+/**
    * get city
    * @return city
    */

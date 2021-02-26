@@ -14,6 +14,7 @@ import javax.persistence.Table;
  * City Properties
  * @author Ton That Cu Ly
  * @version 1.0 2021-03-01
+ * 
  */
 @Entity
 @Table(name = "city")

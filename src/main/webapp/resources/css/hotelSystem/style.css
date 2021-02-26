@@ -8183,7 +8183,7 @@ div.cs-select span {
   display: inline-block;
 }
 #availability .a-col .input-field label {
-  margin-right: 10px;
+/*   margin-right: 10px; */
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -8254,9 +8254,9 @@ div.cs-select span {
 }
 .feature-full-1col .image {
   float: left;
-  width: 97.5%;
-  height: 15em;
-  margin-left: 1em;
+  width: 96.5%;
+  height: 20em;
+  margin-left: 1.7em;
 }
 
 @media screen and (max-width: 768px) {
@@ -8264,6 +8264,23 @@ div.cs-select span {
     flex-wrap: wrap;
     position: relative;
     width: 100%;
+    margin-left: 2.6em;
+  }
+}
+@media screen and (max-width: 375px) {
+  .feature-full-1col .image, .feature-full-1col .desc {
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    margin-left: .6em;
+  }
+}
+@media screen and (max-width: 414px) {
+  .feature-full-1col .image, .feature-full-1col .desc {
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    margin-left: .6em;
   }
 }
 .feature-full-1col .image {
@@ -8331,7 +8348,7 @@ div.cs-select span {
 }
 .feature-full-3col .f-hotel {
   float: left;
-  width: 33%;
+  width: 32%;
   position: relative;
   overflow: hidden;
   display: -webkit-box;
@@ -8341,7 +8358,8 @@ div.cs-select span {
   display: flex;
   flex-flow: row wrap;
   height: 15em;
-  margin-top: 20px;
+  margin-top: 1.5em;
+  margin-left:11px;
   cursor: pointer;
 }
 @media screen and (max-width: 992px) {
@@ -8391,14 +8409,21 @@ div.cs-select span {
   .feature-full-3col .f-hotel .image {
     position: relative;
     height: 200px;
+    margin-top: 1em;
   }
 }
 .feature-full-3col .f-hotel .image {
   width: 96%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 320px) {
   .feature-full-3col .f-hotel .image {
     width: 100%;
+    margin-top: .5em;
+  }
+  
+  .feature-full-3col .f-hotel {
+    height: 13em;
+    
   }
 }
 
@@ -8426,7 +8451,52 @@ div.cs-select span {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-
+#hotel-facilities .banner .feature-full-1col .image {
+  margin-top: 37em;
+  margin-left: 2.5em;
+  height: 15em;
+  width: 95%;
+}
+@media screen and (max-width: 768px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 78em;
+    margin-left: 1em;
+    height: 15em;
+    width: 95%;
+  }
+}
+@media screen and (max-width: 540px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 72em;
+    margin-left: 1em;
+    height: 15em;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 414px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 72em;
+    margin-left: 1em;
+    height: 15em;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 375px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 75em;
+    margin-left: 1em;
+    height: 15em;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 320px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 80em;
+    margin-left: 1em;
+    height: 15em;
+    width: 90%;
+  }
+}
 #tabs {
   float: left;
   width: 100%;
@@ -8674,9 +8744,10 @@ div.cs-select span {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  width: 100%;
-  height: 300px;
+  width: 94%;
+  height: 150px;
   position: relative;
+  margin-left: 1.3em;
 }
 #fh5co-blog-section .blog-grid .date {
   width: 80px;
@@ -8696,10 +8767,17 @@ div.cs-select span {
   border-top: 0;
   padding: 20px;
   margin-bottom: 40px;
+  margin-left: 1.3em;
 }
 @media screen and (max-width: 992px) {
   #fh5co-blog-section .desc {
     margin-bottom: 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #fh5co-blog-section .desc, #fh5co-blog-section .blog-grid {
+    margin-left: 0;
+    width: 100%
   }
 }
 #fh5co-blog-section .desc h3 {

@@ -1,5 +1,7 @@
 package com.chilli.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.chilli.model.ImageBanner;
@@ -13,4 +15,6 @@ import com.chilli.model.ImageBanner;
  */
 public interface ImageBannerRepository extends CrudRepository<ImageBanner, String> {
 
+  // get banner by language
+  List<ImageBanner> findByLanguage(String lang);
 }

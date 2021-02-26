@@ -12,7 +12,11 @@ import com.chilli.model.ImageBanner;
  *
  */
 public interface ImageBannerService {
-
-	public List<ImageBanner> getAllBanner();
+  /**
+   * get banner by Language
+   * @param lang
+   * @return list banner
+   */
+  public List<ImageBanner> getAllBannerByLang(String lang);
 
 }

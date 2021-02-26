@@ -3,6 +3,7 @@ package com.chilli.controller;
 import static com.chilli.common.ComConstant.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,10 +23,12 @@ import com.chilli.model.City;
 import com.chilli.model.Customer;
 import com.chilli.model.ImageBanner;
 import com.chilli.model.MessageRes;
+import com.chilli.model.TypeHotel;
 import com.chilli.service.CityService;
 import com.chilli.service.CustomerService;
 import com.chilli.service.ImageBannerService;
 import com.chilli.service.MessageResService;
+import com.chilli.service.TypeHotelService;
 
 /**
  * 
@@ -54,6 +57,10 @@ public class MainController {
 
   /* ImageBanner Service */
   @Autowired
+  TypeHotelService typeHotService;
+
+  /* Type hotel Service */
+  @Autowired
   ImageBannerService bannerService;
 
   /**
@@ -75,7 +82,7 @@ public class MainController {
     String pageval = "";
 
     // get All Banner
-    List<ImageBanner> lstBanner = bannerService.getAllBanner();
+    List<ImageBanner> lstBanner = bannerService.getAllBannerByLang("vn");
     // Bring list image banner to layout
     model.addAttribute("lstBanner", lstBanner);
 
@@ -86,14 +93,15 @@ public class MainController {
 
     // get All City
     List<City> lstCity = cityServ.getAllCity();
+    // remove da nang city
     lstCity.remove(ctDanang);
-//    for (int i = 0; i < lstCity.size(); i++) {
-//      if (appUti.getProperty(KEY_DANANG_CITY).equals(lstCity.get(i).getCityId())) {
-//        
-//      }
-//    }
     // bring list City to layout
     model.addAttribute("lstCity", lstCity);
+
+    // get type hotel By language
+    List<TypeHotel> lstTypeHot = typeHotService.getTypeHotByLang("vn");
+    // bring list type hotel to layout
+    model.addAttribute("lstTypeHot", lstTypeHot);
 
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_INDEX_PAGE);
 

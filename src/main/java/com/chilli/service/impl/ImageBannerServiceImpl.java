@@ -19,18 +19,21 @@ import com.chilli.service.ImageBannerService;
 @Service
 public class ImageBannerServiceImpl implements ImageBannerService {
 
-	/* ImageBannerRepository */
-	@Autowired
-	ImageBannerRepository bannerRepo;
-	
-	// get All Banner
-	@Override
-	public List<ImageBanner> getAllBanner() {
-		// create List Banner
-		List<ImageBanner> lstBanner = new ArrayList<ImageBanner>();
-		// get All banner
-		lstBanner = (List<ImageBanner>) bannerRepo.findAll();
-		
-		return lstBanner;
-	}
+  /* ImageBannerRepository */
+  @Autowired
+  ImageBannerRepository bannerRepo;
+  
+  /**
+   * Get banner By language
+   * return lstBanner
+   */
+  @Override
+  public List<ImageBanner> getAllBannerByLang(String lang) {
+    // create List Banner
+    List<ImageBanner> lstBanner = new ArrayList<ImageBanner>();
+    // get All banner
+    lstBanner = (List<ImageBanner>) bannerRepo.findByLanguage(lang);
+    
+    return lstBanner;
+  }
 }

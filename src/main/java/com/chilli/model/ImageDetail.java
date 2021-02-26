@@ -29,10 +29,10 @@ public class ImageDetail implements Serializable {
   @Column(name="IMAGE_DETAIL_URL")
   private String imageDetailUrl;
 
-  /* Product */
-  @ManyToOne
-  @JoinColumn(name="PRODUCT_ID")
-  private Product product;
+//  /* Product */
+//  @ManyToOne
+//  @JoinColumn(name="PRODUCT_ID")
+//  private Product product;
 
   /**
    * get Image detail Id
@@ -66,20 +66,5 @@ public class ImageDetail implements Serializable {
     this.imageDetailUrl = imageDetailUrl;
   }
 
-  /**
-   * Get Product
-   * @return product Product
-   */
-  public Product getProduct() {
-    return product;
-  }
-
-  /**
-   * Set Product
-   * @param product Product
-   */
-  public void setProduct(Product product) {
-    this.product = product;
-  }
 
 }

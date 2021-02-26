@@ -134,15 +134,9 @@ Version: 1.0.0 2021-03-01
                 <section>
                   <select class="cs-select cs-skin-border">
                     <option value="" disabled selected>Khách Sạn</option>
-                    <option value="email">Khách Sạn 1 sao</option>
-                    <option value="email">Khách Sạn 2 sao</option>
-                    <option value="email">Khách Sạn 3 sao</option>
-                    <option value="email">Khách Sạn 4 sao</option>
-                    <option value="email">Khách Sạn 5 sao</option>
-                    <option value="email">Resort 1 sao</option>
-                    <option value="email">Resort 2 sao</option>
-                    <option value="email">Resort 3 sao</option>
-                    
+                    <c:forEach var = "item" items = "${lstTypeHot}">
+                      <option value="${item.typeId}">${item.typeName}</option>
+                    </c:forEach>
                   </select>
                 </section>
               </div>
@@ -216,7 +210,7 @@ Version: 1.0.0 2021-03-01
         <div class="row">
           <div class="col-md-12">
             <div class="section-title text-center">
-              <h2>Hotel Facilities</h2>
+              <h2>ĐIỂM ĐẾN BÊN LỀ</h2>
             </div>
           </div>
         </div>
@@ -369,8 +363,73 @@ Version: 1.0.0 2021-03-01
             </div>
           </div>
         </div>
+        <div class = "row banner">
+          <div class="feature-full-1col">
+            <div class="image" style="background-image: url(../../../resources/images/hotelSystem/danang.jpg);">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div id="fh5co-blog-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title text-center">
+              <h2>Cẩm Nang Du Lịch</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="blog-grid" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            </div>
+            <div class="desc">
+              <h3><a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến toàn cầu năm 2020. See More...</a></h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog-grid" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            </div>
+            <div class="desc">
+              <h3><a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến toàn cầu năm 2020. See More...</a></h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog-grid" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            </div>
+            <div class="desc">
+              <h3><a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến toàn cầu năm 2020. See More...</a></h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog-grid" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            </div>
+            <div class="desc">
+              <h3><a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến toàn cầu năm 2020. See More...</a></h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog-grid" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            </div>
+            <div class="desc">
+              <h3><a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến toàn cầu năm 2020. See More...</a></h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog-grid" style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            </div>
+            <div class="desc">
+              <h3><a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến toàn cầu năm 2020. See More...</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
   
     <div id="testimonial">
       <div class="container">
@@ -410,53 +469,6 @@ Version: 1.0.0 2021-03-01
       </div>
     </div>
   
-  
-    <div id="fh5co-blog-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-title text-center">
-              <h2>Our Blog</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="blog-grid" style="background-image: url(images/image-1.jpg);">
-              <div class="date text-center">
-                <span>09</span>
-                <small>Aug</small>
-              </div>
-            </div>
-            <div class="desc">
-              <h3><a href="#">Most Expensive Hotel</a></h3>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="blog-grid" style="background-image: url(images/image-2.jpg);">
-              <div class="date text-center">
-                <span>09</span>
-                <small>Aug</small>
-              </div>
-            </div>
-            <div class="desc">
-              <h3><a href="#">1st Anniversary of Luxe Hotel</a></h3>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="blog-grid" style="background-image: url(images/image-3.jpg);">
-              <div class="date text-center">
-                <span>09</span>
-                <small>Aug</small>
-              </div>
-            </div>
-            <div class="desc">
-              <h3><a href="#">Discover New Adventure</a></h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   
     <footer id="footer" class="fh5co-bg-color">
       <div class="container">
