@@ -15,5 +15,5 @@ import com.chilli.model.TypeHotel;
  */
 public interface TypeHotelRepository extends CrudRepository<TypeHotel, String>{
   // find By language
-  List<TypeHotel> findByLanguage(String lang);
+  List<TypeHotel> findByLanguageAndCategory(String lang, String category);
 }

@@ -84,4 +84,16 @@ public class ComConstant {
 
   /* Da Nang City Id */
   public static final String KEY_DANANG_CITY = "DANANG_CITY";
+
+  /* language viet nam*/
+  public static final String KEY_LANGUAGE_VN = "LANGUAGE_VN";
+
+  /* language english*/
+  public static final String KEY_LANGUAGE_EN = "LANGUAGE_EN";
+
+  /* hotel category: hotel and resort */
+  public static final String KEY_CATEGORY_HOTTEL = "CATEGORY_HOTTEL";
+
+  /* hotel category: hotel and resort */
+  public static final String KEY_CATEGORY_SIDELINE = "CATEGORY_SIDELINE";
 }

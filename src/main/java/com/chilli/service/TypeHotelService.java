@@ -13,6 +13,6 @@ import com.chilli.model.TypeHotel;
  */
 public interface TypeHotelService {
 
-  public List<TypeHotel> getTypeHotByLang(String lang);
+  public List<TypeHotel> getTypeHotByLangAndCategory(String lang, String category);
 
 }

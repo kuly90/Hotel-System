@@ -23,9 +23,11 @@ Version: 1.0.0 2021-03-01
     <link rel="icon" href="${contextPath}/resources/images/CLO.png" type="image/gif" sizes="20x20">
   
     <!-- Stylesheets -->
+    <!-- Chat - Popup -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/hotelSystem/popup-chat.css">
     <!-- Dropdown Menu -->
     <link href="${contextPath}/resources/css/hotelSystem/superfish.css" rel="stylesheet">
-  
     <!-- Date Picker -->
     <link href="${contextPath}/resources/css/hotelSystem/bootstrap-datepicker.min.css" rel="stylesheet">
     <!-- CS Select -->
@@ -134,7 +136,7 @@ Version: 1.0.0 2021-03-01
                 <section>
                   <select class="cs-select cs-skin-border">
                     <option value="" disabled selected>Khách Sạn</option>
-                    <c:forEach var = "item" items = "${lstTypeHot}">
+                    <c:forEach var = "item" items = "${lstTypeHotel}">
                       <option value="${item.typeId}">${item.typeName}</option>
                     </c:forEach>
                   </select>
@@ -251,7 +253,7 @@ Version: 1.0.0 2021-03-01
               <div class="container">
                 <div class="row">
                   <div class="col-md-6">
-                    <img src="${contextPath}/resources/images/hotelSystem/Restaurant.jpg" class="img-responsive" alt="Image">
+                    <img src="${contextPath}/resources/images/hotelSystem/restaurant.jpg" class="img-responsive" alt="Image">
                   </div>
                   <div class="col-md-6">
                     <span class="super-heading-sm">World Class</span>
@@ -429,8 +431,31 @@ Version: 1.0.0 2021-03-01
     </div>
   
   
-  
-  
+<!-- Chat Popup -->
+
+    <section>
+      <button class="chat-btn"> 
+        <i class="material-icons"> comment </i>
+      </button>
+
+      <div class="chat-popup">
+        <div class="badge badge-danger">1</div>
+        <div class="chat-area">
+          <div class="income-msg">
+             <img src="${contextPath}/resources/images/hotelSystem/person.jpg" class="avatar" alt="">
+             <span class="msg"> Hi, How can I help you?</span>
+           </div>   
+         </div>
+
+         <div class="input-area">
+           <input id="chat-box" autofocus="autofocus" type="text">
+           <button id="emoji-btn"> &#127773;</button>
+           <button class="submit"> <i class="material-icons"> send</i></button>
+         </div>
+       </div>
+    </section>
+    <!-- End Chat Popup -->
+    
     <div id="testimonial">
       <div class="container">
         <div class="row">
@@ -554,5 +579,8 @@ Version: 1.0.0 2021-03-01
     <!-- Flexslider -->
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/jquery.flexslider-min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/custom.js"></script>
+    <!-- Chat Popup -->
+    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/popup-chat.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/popup-chat-main.js"></script>
   </body>
 </html>

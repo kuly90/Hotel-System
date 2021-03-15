@@ -99,9 +99,18 @@ public class MainController {
     model.addAttribute("lstCity", lstCity);
 
     // get type hotel By language
-    List<TypeHotel> lstTypeHot = typeHotService.getTypeHotByLang("vn");
+    List<TypeHotel> lstTypeHotel = typeHotService.getTypeHotByLangAndCategory(
+            appUti.getProperty(KEY_LANGUAGE_VN)
+            , appUti.getProperty(KEY_CATEGORY_HOTTEL));
     // bring list type hotel to layout
-    model.addAttribute("lstTypeHot", lstTypeHot);
+    model.addAttribute("lstTypeHotel", lstTypeHotel);
+
+    // get list sideline
+    List<TypeHotel> lstTypeSideline = typeHotService.getTypeHotByLangAndCategory(
+            appUti.getProperty(KEY_LANGUAGE_VN)
+            , appUti.getProperty(KEY_CATEGORY_SIDELINE));
+    // bring list type hotel to layout
+    model.addAttribute("lstTypeSideline", lstTypeSideline);
 
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_INDEX_PAGE);
 

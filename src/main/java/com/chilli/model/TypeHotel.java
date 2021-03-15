@@ -28,11 +28,31 @@ public class TypeHotel implements Serializable{
   @Column(name = "TYPE_NAME")
   private String typeName;
 
+  /* category */
+  @Column(name = "CATEGORY")
+  private String category;
+
   /* language */
   @Column(name = "LANGUAGE")
   private String language;
+  
+  /**
+   * get category
+   * @return category String
+   */
+  public String getCategory() {
+    return category;
+  }
 
   /**
+   * Set category
+   * @param category
+   */
+  public void setCategory(String category) {
+    this.category = category;
+}
+
+/**
    * get Type id
    * @return type id
    */

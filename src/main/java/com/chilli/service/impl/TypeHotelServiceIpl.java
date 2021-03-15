@@ -30,11 +30,11 @@ public class TypeHotelServiceIpl implements TypeHotelService{
    * @return list type hotel
    */
   @Override
-  public List<TypeHotel> getTypeHotByLang(String lang) {
+  public List<TypeHotel> getTypeHotByLangAndCategory(String lang, String category) {
     // new instant Array List of type hotel
     List<TypeHotel> lstTypeHot = new ArrayList<TypeHotel>();
     // get Type hotel by language
-    lstTypeHot = (List<TypeHotel>) typeHotRepo.findByLanguage(lang);
+    lstTypeHot = (List<TypeHotel>) typeHotRepo.findByLanguageAndCategory(lang, category);
 
     return lstTypeHot;
   }
