@@ -3,6 +3,7 @@ package com.chilli.repository;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.chilli.model.TypeHotel;
 
@@ -13,6 +14,7 @@ import com.chilli.model.TypeHotel;
  * @version 1.0 2021-03-01
  *
  */
+@Repository
 public interface TypeHotelRepository extends CrudRepository<TypeHotel, String>{
   // find By language
   List<TypeHotel> findByLanguageAndCategory(String lang, String category);

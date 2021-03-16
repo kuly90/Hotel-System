@@ -5,13 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import com.chilli.model.Customer;
 
-@Repository
 /**
  * Get Data Customer
  * @author This Mr.Ly
  * @version 1.0 2020-09-09
  * 
  */
+@Repository
 public interface CustomerRepository extends CrudRepository<Customer, String> {
   
   // find Customer By phone Number Or Email

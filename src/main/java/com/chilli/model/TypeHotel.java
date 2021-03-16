@@ -35,8 +35,89 @@ public class TypeHotel implements Serializable{
   /* language */
   @Column(name = "LANGUAGE")
   private String language;
+
+  /* data tab css */
+  @Column(name = "DATA_TAB")
+  private String dataTab;
+
+  /* class css */
+  @Column(name = "CLASS_CSS")
+  private String classCss;
   
+  /* class css */
+  @Column(name = "CLASS_CSS2")
+  private String classCss2;
+
+  /* image */
+  @Column(name = "IMAGE")
+  private String image;
+
   /**
+   * get image
+   * @return image String
+   */
+  public String getImage() {
+    return image;
+  }
+
+  /**
+   * get class 2
+   * @return classCss2 String
+   */
+  public String getClassCss2() {
+    return classCss2;
+}
+
+  /**
+   * set class 2
+   * @param classCss2
+   */
+  public void setClassCss2(String classCss2) {
+    this.classCss2 = classCss2;
+  }
+
+
+/**
+   * set image
+   * @param image
+   */
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  /**
+   * get data tab
+   * @return dataTab String
+   */
+  public String getDataTab() {
+    return dataTab;
+}
+
+  /**
+   * set data tab
+   * @param dataTab
+   */
+  public void setDataTab(String dataTab) {
+    this.dataTab = dataTab;
+}
+
+  /**
+   * get class css
+   * @return classCss
+   */
+  public String getClassCss() {
+    return classCss;
+}
+
+  /**
+   * set class css
+   * @param classCss
+   */
+  public void setClassCss(String classCss) {
+    this.classCss = classCss;
+}
+
+/**
    * get category
    * @return category String
    */

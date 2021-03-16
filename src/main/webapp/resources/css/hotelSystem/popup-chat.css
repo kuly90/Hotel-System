@@ -15,7 +15,6 @@ section{
     margin: auto;
     text-align: center;
     padding: 0 1rem;
-    z-index: 999;
 }
 h1{
     font-size: 3rem;
@@ -40,6 +39,7 @@ p{
     opacity: 0.8;
     transition: opacity 0.3s;
     box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+    z-index: 99
 }
 
 .chat-btn:hover, .submit:hover, #emoji-btn:hover{
@@ -60,6 +60,7 @@ p{
     padding: 0.75rem;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
     border-radius: 10px;
+    z-index: 99;
 }
 
 .show{

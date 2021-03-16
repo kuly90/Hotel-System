@@ -32,6 +32,7 @@ div.cs-select:focus {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	font-size: .75em;
 }
 
 /* Placeholder and selected option */

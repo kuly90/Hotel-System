@@ -8184,18 +8184,71 @@ div.cs-select span {
 }
 #availability .a-col .input-field label {
 /*   margin-right: 10px; */
-  font-size: 12px;
+  font-size: .9em;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #fff;
   float: left;
   margin-top: 7px;
 }
+@media screen and (max-width: 1198px) {
+  #availability .a-col .input-field label {
+   font-size: .7em;
+   
+  }
+  .cs-select span{
+  font-size: .55em;
+  }
+  #availability .a-col .input-field input[type="text"]{
+    height: 2em !important;
+  }
+}
+@media screen and (max-width: 990px) {
+  #availability .a-col .input-field label {
+   font-size: .49em;
+   
+  }
+  .cs-select span{
+    font-size: .55em !important;
+  }
+   .cs-skin-border > span::after{
+   font-size: .58em !important;
+   }
+  #availability .a-col .input-field input[type="text"]{
+    height: 2.5em !important;
+    font-size: .7em !important;
+  }
+}
+@media screen and (max-width: 828px) {
+  #availability .a-col .input-field label {
+   font-size: .8em;
+   
+  }
+  .cs-select span{
+    font-size: .8em !important;
+  }
+   .cs-skin-border > span::after{
+   font-size: .9em !important;
+   }
+  #availability .a-col .input-field input[type="text"]{
+    height: 2em !important;
+    font-size: 1em !important;
+    margin-right: .6em !important;
+  }
+}
+@media screen and (max-width: 575px) {
+  #availability .a-col .input-field label {
+   font-size: .7em;
+  }
+  #availability .a-col .input-field input[type="text"]{
+    
+  }
+}
 #availability .a-col .input-field input[type="text"] {
   float: right;
   margin-right: 0;
   width: 60%;
-  height: 42px;
+  height: 2.3em;
   font-size: 15px;
   line-height: 36px;
   padding-top: 0 !important;
@@ -8457,44 +8510,52 @@ div.cs-select span {
   height: 15em;
   width: 95%;
 }
+@media screen and (max-width: 1198px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 30em;
+    width: 94%;
+  }
+}
+  @media screen and (max-width: 990px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 62em;
+    width: 89%;
+  }
+}
 @media screen and (max-width: 768px) {
   #hotel-facilities .banner .feature-full-1col .image {
-    margin-top: 78em;
-    margin-left: 1em;
-    height: 15em;
-    width: 95%;
+    margin-top: 135%;
+    width: 94%;
+    margin-left: 1.4em !important
   }
 }
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 650px) {
   #hotel-facilities .banner .feature-full-1col .image {
-    margin-top: 72em;
-    margin-left: 1em;
-    height: 15em;
+    margin-top: 137%;
+    width: 93%;
+    margin-left: 1.3em !important
+  }
+}
+@media screen and (max-width: 544px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 150%;
+    width: 92%;
+  }
+}
+@media screen and (max-width: 470px) {
+  #hotel-facilities .banner .feature-full-1col .image {
+    margin-top: 158%;
     width: 90%;
   }
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 423px) {
   #hotel-facilities .banner .feature-full-1col .image {
-    margin-top: 72em;
-    margin-left: 1em;
-    height: 15em;
-    width: 90%;
+    margin-top: 180%;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 371px) {
   #hotel-facilities .banner .feature-full-1col .image {
-    margin-top: 75em;
-    margin-left: 1em;
-    height: 15em;
-    width: 90%;
-  }
-}
-@media screen and (max-width: 320px) {
-  #hotel-facilities .banner .feature-full-1col .image {
-    margin-top: 80em;
-    margin-left: 1em;
-    height: 15em;
-    width: 90%;
+    margin-top: 190%;
   }
 }
 #tabs {
@@ -9321,3 +9382,9 @@ input[type="text"] {
 }
 
 /*# sourceMappingURL=style.css.map */
+.section-title .tour-category {
+  margin-bottom: .5em;
+  margin-left: 1em;
+  cursor: pointer;
+  text-decoration: underline;
+}

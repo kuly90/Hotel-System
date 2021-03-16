@@ -14,6 +14,9 @@ CREATE TABLE `city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 
+DROP TABLE IF EXISTS `hotel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hotel` (
   `HOTEL_ID` CHAR(6) NOT NULL PRIMARY KEY,
   `HOTEL_NAME` NVARCHAR(100) NOT NULL,
@@ -47,8 +50,44 @@ CREATE TABLE `type_hotel` (
   `TYPE_NAME` NVARCHAR(100) NOT NULL,
   `CATEGORY` CHAR(1) NOT NULL,
   `LANGUAGE` CHAR(2) NOT NULL,
+  `DATA_TAB` CHAR(4) ,
+  `CLASS_CSS` NVARCHAR(100),
+  `CLASS_CSS2` NVARCHAR(100),
+  `IMAGE` NVARCHAR(225),
   UNIQUE KEY `TYPE_ID_UNIQUE` (`TYPE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 
+DROP TABLE IF EXISTS `tour_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tour_category` (
+  `CATEGORY_ID` CHAR(1) NOT NULL PRIMARY KEY,
+  `CATEGORY_NAME` NVARCHAR(100) NOT NULL,
+  UNIQUE KEY `CATEGORY_ID_UNIQUE` (`CATEGORY_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
 
+DROP TABLE IF EXISTS `tour`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tour` (
+  `TOUR_ID` CHAR(6) NOT NULL PRIMARY KEY,
+  `TOUR_NAME` NVARCHAR(225) NOT NULL,
+  `CATEGORY_ID` CHAR(1) NOT NULL,
+  UNIQUE KEY `TOUR_ID_UNIQUE` (`TOUR_ID`),
+  CONSTRAINT tou_tou_fk FOREIGN KEY (CATEGORY_ID) REFERENCES tour_category(CATEGORY_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+
+DROP TABLE IF EXISTS `tour_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tour_image` (
+  `TOUR_IMAGE_ID` CHAR(6) NOT NULL PRIMARY KEY,
+  `TOUR_IMAGE_URL` NVARCHAR(225) NOT NULL,
+  `TOUR_ID` CHAR(1) NOT NULL,
+  UNIQUE KEY `TOUR_ID_UNIQUE` (`TOUR_IMAGE_ID`),
+  CONSTRAINT tou_IMG_fk FOREIGN KEY (TOUR_ID) REFERENCES tour(TOUR_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;

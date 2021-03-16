@@ -82,7 +82,7 @@ public class MainController {
     String pageval = "";
 
     // get All Banner
-    List<ImageBanner> lstBanner = bannerService.getAllBannerByLang("vn");
+    List<ImageBanner> lstBanner = bannerService.getAllBannerByLang(appUti.getProperty(KEY_LANGUAGE_VN));
     // Bring list image banner to layout
     model.addAttribute("lstBanner", lstBanner);
 
@@ -112,6 +112,8 @@ public class MainController {
     // bring list type hotel to layout
     model.addAttribute("lstTypeSideline", lstTypeSideline);
 
+    // get Category tour
+    
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_INDEX_PAGE);
 
     return pageval;
