@@ -17,6 +17,10 @@ import com.chilli.model.ImageBanner;
 @Repository
 public interface ImageBannerRepository extends CrudRepository<ImageBanner, String> {
 
-  // get banner by language
+  /**
+   * get List Image Banner
+   * @param lang
+   * @return list image banner
+   */
   List<ImageBanner> findByLanguage(String lang);
 }

@@ -1,5 +1,7 @@
 package com.chilli.service;
 
+import com.chilli.model.TourCategory;
+
 /**
  * Get data form Tour Category Table
  * 
@@ -8,5 +10,11 @@ package com.chilli.service;
  *
  */
 public interface TourCategoryService {
+
+  /**
+   * get Tour Category By Id
+   * @return TourCate 
+   */
+  public TourCategory getTourCategorById(String categoryId);
 
 }

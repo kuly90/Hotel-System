@@ -1,7 +1,5 @@
 package com.chilli.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,10 +20,16 @@ public class TourCategoryServiceIplm implements TourCategoryService{
 
   /* Tour Category Repository */
   @Autowired
-  TourCategoryRepository tourCateRepo;
+  TourCategoryRepository tourCateRepository;
 
-  public List<TourCategory> getTourCate(){
-    
-    return new ArrayList<TourCategory>();
+  @Override
+  public TourCategory getTourCategorById(String categoryId){
+
+    // new instant  TourCategory
+    TourCategory tourCate = new TourCategory();
+    // get list Tour category
+    tourCate = tourCateRepository.findByCategoryId(categoryId);
+
+    return tourCate;
   }
 }

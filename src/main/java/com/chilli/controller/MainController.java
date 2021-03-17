@@ -23,11 +23,14 @@ import com.chilli.model.City;
 import com.chilli.model.Customer;
 import com.chilli.model.ImageBanner;
 import com.chilli.model.MessageRes;
+import com.chilli.model.Tour;
+import com.chilli.model.TourCategory;
 import com.chilli.model.TypeHotel;
 import com.chilli.service.CityService;
 import com.chilli.service.CustomerService;
 import com.chilli.service.ImageBannerService;
 import com.chilli.service.MessageResService;
+import com.chilli.service.TourCategoryService;
 import com.chilli.service.TypeHotelService;
 
 /**
@@ -63,6 +66,10 @@ public class MainController {
   @Autowired
   ImageBannerService bannerService;
 
+  /* Tour Category Service */
+  @Autowired
+  TourCategoryService tourcateService;
+
   /**
    * go to page index
    * 
@@ -83,36 +90,72 @@ public class MainController {
 
     // get All Banner
     List<ImageBanner> lstBanner = bannerService.getAllBannerByLang(appUti.getProperty(KEY_LANGUAGE_VN));
-    // Bring list image banner to layout
-    model.addAttribute("lstBanner", lstBanner);
 
     // get Da nang City
     City ctDanang = cityServ.getDanangCity(appUti.getProperty(KEY_DANANG_CITY));
-    //bring danang city to layout
-    model.addAttribute("ctDanang", ctDanang);
 
     // get All City
     List<City> lstCity = cityServ.getAllCity();
     // remove da nang city
     lstCity.remove(ctDanang);
-    // bring list City to layout
-    model.addAttribute("lstCity", lstCity);
 
     // get type hotel By language
     List<TypeHotel> lstTypeHotel = typeHotService.getTypeHotByLangAndCategory(
             appUti.getProperty(KEY_LANGUAGE_VN)
             , appUti.getProperty(KEY_CATEGORY_HOTTEL));
-    // bring list type hotel to layout
-    model.addAttribute("lstTypeHotel", lstTypeHotel);
 
     // get list sideline
     List<TypeHotel> lstTypeSideline = typeHotService.getTypeHotByLangAndCategory(
             appUti.getProperty(KEY_LANGUAGE_VN)
             , appUti.getProperty(KEY_CATEGORY_SIDELINE));
+
+    // get tour of North
+    TourCategory tourNorth = tourcateService.getTourCategorById(appUti.getProperty(KEY_TOUR_CATEGORY_NORTH));
+    List<Tour> lstTourNorh = new ArrayList<Tour>();
+    // get tour of Central
+    TourCategory tourCentral = tourcateService.getTourCategorById(appUti.getProperty(KEY_TOUR_CATEGORY_CENTRAL));
+    List<Tour> lstTourCentral = new ArrayList<Tour>();
+    // get tour of South
+    TourCategory tourSouth = tourcateService.getTourCategorById(appUti.getProperty(KEY_TOUR_CATEGORY_SOUTH));
+    List<Tour> lstTourSouth = new ArrayList<Tour>();
+    // get tour of World
+    TourCategory tourWorld = tourcateService.getTourCategorById(appUti.getProperty(KEY_TOUR_CATEGORY_WORLD));
+    List<Tour> lstTourWorld = new ArrayList<Tour>();
+    // get 3 Tour of category tour
+    for (int i = 0; i < 3; i++) {
+        // list Tour North
+        if (i < tourNorth.getLstTour().size()) {
+          lstTourNorh.add(tourNorth.getLstTour().get(i));
+        }
+        // list Tour Central
+        if (i < tourCentral.getLstTour().size()) {
+          lstTourCentral.add(tourCentral.getLstTour().get(i));
+        }
+        // list Tour South
+        if (i < tourSouth.getLstTour().size()) {
+          lstTourSouth.add(tourSouth.getLstTour().get(i));
+        }
+        // list Tour World
+        if (i < tourWorld.getLstTour().size()) {
+          lstTourWorld.add(tourWorld.getLstTour().get(i));
+        }
+      }
+
+    // Bring list image banner to layout
+    model.addAttribute("lstBanner", lstBanner);
+    //bring danang city to layout
+    model.addAttribute("ctDanang", ctDanang);
+    // bring list City to layout
+    model.addAttribute("lstCity", lstCity);
+    // bring list type hotel to layout
+    model.addAttribute("lstTypeHotel", lstTypeHotel);
     // bring list type hotel to layout
     model.addAttribute("lstTypeSideline", lstTypeSideline);
-
-    // get Category tour
+    // Bring all Tour to layout
+    model.addAttribute("lstTourNorh", lstTourNorh);
+    model.addAttribute("lstTourCentral", lstTourCentral);
+    model.addAttribute("lstTourSouth", lstTourSouth);
+    model.addAttribute("lstTourWorld", lstTourWorld);
     
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_INDEX_PAGE);
 

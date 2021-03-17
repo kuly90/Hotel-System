@@ -305,39 +305,18 @@ Version: 1.0.0 2021-03-01
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
-              <div class="blog-grid"
-                style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-              </div>
-              <div class="desc">
-                <h3>
-                  <a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến
-                    toàn cầu năm 2020. See More...</a>
-                </h3>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="blog-grid"
-                style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-              </div>
-              <div class="desc">
-                <h3>
-                  <a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến
-                    toàn cầu năm 2020. See More...</a>
-                </h3>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="blog-grid"
-                style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-              </div>
-              <div class="desc">
-                <h3>
-                  <a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến
-                    toàn cầu năm 2020. See More...</a>
-                </h3>
-              </div>
-            </div>
+            <c:forEach var = "item" items="${lstTourNorh}">
+              <div class="col-md-4">
+	              <div class="blog-grid"
+	                style="background-image: url(../../../resources/images/hotelSystem/${item.tourImages.get(0).tourImageUrl});">
+	              </div>
+	              <div class="desc">
+	                <h3>
+	                  <a href="#" title="${item.tourName}">${item.tourName}</a>
+	                </h3>
+	              </div>
+	            </div>
+            </c:forEach>
           </div>
           
           <div class="row">
@@ -348,40 +327,63 @@ Version: 1.0.0 2021-03-01
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
-              <div class="blog-grid"
-                style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
+            <c:forEach var = "item" items="${lstTourCentral}">
+              <div class="col-md-4">
+                <div class="blog-grid"
+                  style="background-image: url(../../../resources/images/hotelSystem/${item.tourImages.get(0).tourImageUrl});">
+                </div>
+                <div class="desc">
+                  <h3>
+                    <a href="#" title="${item.tourName}">${item.tourName}</a>
+                  </h3>
+                </div>
               </div>
-              <div class="desc">
-                <h3>
-                  <a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến
-                    toàn cầu năm 2020. See More...</a>
-                </h3>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="blog-grid"
-                style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-              </div>
-              <div class="desc">
-                <h3>
-                  <a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến
-                    toàn cầu năm 2020. See More...</a>
-                </h3>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="blog-grid"
-                style="background-image: url(../../../resources/images/hotelSystem/rex-hotel.jpg);">
-              </div>
-              <div class="desc">
-                <h3>
-                  <a href="#">Đà Nẵng đứng Top 1 trong danh sách 10 điểm đến
-                    toàn cầu năm 2020. See More...</a>
-                </h3>
+            </c:forEach>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2 class="tour-category" onclick="searchTour()"> <spring:message code="title.tour.south" /></h2>
               </div>
             </div>
           </div>
+          <div class="row">
+            <c:forEach var = "item" items="${lstTourSouth}">
+              <div class="col-md-4">
+                <div class="blog-grid"
+                  style="background-image: url(../../../resources/images/hotelSystem/${item.tourImages.get(0).tourImageUrl});">
+                </div>
+                <div class="desc">
+                  <h3>
+                    <a href="#" title="${item.tourName}">${item.tourName}</a>
+                  </h3>
+                </div>
+              </div>
+            </c:forEach>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2 class="tour-category" onclick="searchTour()"> <spring:message code="title.tour.world" /></h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <c:forEach var = "item" items="${lstTourWorld}">
+              <div class="col-md-4">
+                <div class="blog-grid"
+                  style="background-image: url(../../../resources/images/hotelSystem/${item.tourImages.get(0).tourImageUrl});">
+                </div>
+                <div class="desc">
+                  <h3>
+                    <a href="#" title="${item.tourName}">${item.tourName}</a>
+                  </h3>
+                </div>
+              </div>
+            </c:forEach>
+          </div>
+          
         </div>
       </div>
 

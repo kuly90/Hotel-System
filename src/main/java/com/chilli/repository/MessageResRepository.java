@@ -16,5 +16,5 @@ import com.chilli.model.MessageRes;
 public interface MessageResRepository extends CrudRepository<MessageRes, String> {
 
   // find message By Id
-	MessageRes findMessageResByMsgId(String strMsgId);
+  MessageRes findMessageResByMsgId(String strMsgId);
 }

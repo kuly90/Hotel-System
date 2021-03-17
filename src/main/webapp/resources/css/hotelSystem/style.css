@@ -8810,25 +8810,24 @@ div.cs-select span {
   position: relative;
   margin-left: 1.3em;
 }
-#fh5co-blog-section .blog-grid .date {
-  width: 80px;
-  padding: 10px 20px;
-  background: #fff;
-}
-#fh5co-blog-section .blog-grid .date span, #fh5co-blog-section .blog-grid .date small {
-  display: block;
-  text-transform: uppercase;
-}
-#fh5co-blog-section .blog-grid .date small {
-  font-size: 12px;
-  letter-spacing: 2px;
+#fh5co-blog-section .blog-grid:hover{
+  transform: scale(1.1);
+  /* Safari & Google Chrome */
+  -webkit-transform: scale(1.1);
+  /* Mozilla Firefox */
+  -moz-transform: scale(1.1); 
+  /* Opera */
+  -o-transform: scale(1.1);
+  /* IE 9 */
+  -ms-transform: scale(1.1);
+  cursor: pointer; 
 }
 #fh5co-blog-section .desc {
-  border: 1px solid #e6e6e6;
+
   border-top: 0;
-  padding: 20px;
-  margin-bottom: 40px;
-  margin-left: 1.3em;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-left: .7em;
 }
 @media screen and (max-width: 992px) {
   #fh5co-blog-section .desc {
@@ -8847,6 +8846,12 @@ div.cs-select span {
 }
 #fh5co-blog-section .desc h3 a {
   color: rgba(0, 0, 0, 0.7);
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+   display: -webkit-box;
 }
 
 .services {
@@ -9011,14 +9016,13 @@ input[type="text"] {
 }
 
 .section-title {
-  margin-bottom: .5em;
   float: left;
   width: 100%;
   z-index: 99;
 }
 @media screen and (max-width: 768px) {
-  .section-title {
-    padding-top: 4em;
+  .section-title .tour-category{
+    margin-left: 0em !important;
   }
 }
 .section-title h2 {
@@ -9384,7 +9388,9 @@ input[type="text"] {
 /*# sourceMappingURL=style.css.map */
 .section-title .tour-category {
   margin-bottom: .5em;
-  margin-left: 1em;
+  margin-left: 1.25em;
   cursor: pointer;
   text-decoration: underline;
+  font-size: 100%;
+  color: #FF5722;
 }

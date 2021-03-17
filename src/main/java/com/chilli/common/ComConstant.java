@@ -96,4 +96,16 @@ public class ComConstant {
 
   /* hotel category: hotel and resort */
   public static final String KEY_CATEGORY_SIDELINE = "CATEGORY_SIDELINE";
+
+  /* Tour North */
+  public static final String KEY_TOUR_CATEGORY_NORTH = "TOUR_CATEGORY_NORTH";
+  
+  /* Tour North */
+  public static final String KEY_TOUR_CATEGORY_CENTRAL = "TOUR_CATEGORY_CENTRAL";
+  
+  /* Tour North */
+  public static final String KEY_TOUR_CATEGORY_SOUTH = "TOUR_CATEGORY_SOUTH";
+  
+  /* Tour North */
+  public static final String KEY_TOUR_CATEGORY_WORLD = "TOUR_CATEGORY_WORLD";
 }

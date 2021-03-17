@@ -14,5 +14,10 @@ import com.chilli.model.TourCategory;
  */
 @Repository
 public interface TourCategoryRepository extends CrudRepository<TourCategory, String>{
-
+  /**
+   * get category tour By Id
+   * @param categoryId
+   * @return Tour Category
+   */
+  TourCategory findByCategoryId(String categoryId);
 }

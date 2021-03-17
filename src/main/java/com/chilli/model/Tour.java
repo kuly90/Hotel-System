@@ -38,8 +38,8 @@ public class Tour implements Serializable{
   private TourCategory tourCategory;
 
   /* list image */
-  @OneToMany
-  private List<TourImage> lstImage;
+  @OneToMany(mappedBy = "tour")
+  private List<TourImage> tourImages;
 
   /**
    * get Tour Id
@@ -61,16 +61,16 @@ public class Tour implements Serializable{
    * get list image
    * @return lstImage List
    */
-  public List<TourImage> getLstImage() {
-    return lstImage;
+  public List<TourImage> getTourImages() {
+    return tourImages;
   }
 
   /**
    * Set list image
    * @param lstImage
    */
-  public void setLstImage(List<TourImage> lstImage) {
-    this.lstImage = lstImage;
+  public void setTourImages(List<TourImage> tourImages) {
+    this.tourImages = tourImages;
   }
 
   /**
