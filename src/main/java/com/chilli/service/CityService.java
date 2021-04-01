@@ -19,9 +19,9 @@ public interface CityService {
   public List<City> getAllCity();
 
   /**
-   * get Danang city
+   * get city by id
    * @param strCityId
-   * @return Danang City
+   * @return City
    */
-  public City getDanangCity(String strCityId);
+  public City getCityById(String strCityId);
 }

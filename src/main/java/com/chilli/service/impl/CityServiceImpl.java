@@ -43,7 +43,7 @@ public class CityServiceImpl implements CityService{
    * @return ctDanang
    */
   @Override
-  public City getDanangCity(String strCityId) {
+  public City getCityById(String strCityId) {
     // new instant of City
     City ctDanang = new City();
     //get Danang City

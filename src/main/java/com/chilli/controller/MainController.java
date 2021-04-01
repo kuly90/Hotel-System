@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import com.chilli.common.AppConfigUtility;
 import com.chilli.common.Common;
 import com.chilli.model.City;
 import com.chilli.model.Customer;
+import com.chilli.model.Hotel;
 import com.chilli.model.ImageBanner;
 import com.chilli.model.MessageRes;
 import com.chilli.model.Tour;
@@ -73,26 +75,34 @@ public class MainController {
   /**
    * go to page index
    * 
-   * @param session
+   *  @param request
    * @param model
    * @return page index
    */
   @RequestMapping(value = { "/", "/guest" })
   public String welcome(
-          HttpSession session
+          HttpServletRequest request
           , Model model) {
 
     // New Instant AppConfigUtility
     AppConfigUtility appUti = new AppConfigUtility();
-
+    // new Instant Common
+    common = new Common();
     // page value
     String pageval = "";
 
+    // get language
+    String lang = request.getParameter("lang");
+    if (common.isNullOrEmpty(lang) ) {
+      lang = appUti.getProperty(KEY_LANGUAGE_VN);
+    }
     // get All Banner
-    List<ImageBanner> lstBanner = bannerService.getAllBannerByLang(appUti.getProperty(KEY_LANGUAGE_VN));
+    List<ImageBanner> lstBanner = bannerService.getAllBannerByLangAndType(
+                                                lang
+                                                , appUti.getProperty(KEY_BANNER_TYPE_CITY));
 
     // get Da nang City
-    City ctDanang = cityServ.getDanangCity(appUti.getProperty(KEY_DANANG_CITY));
+    City ctDanang = cityServ.getCityById(appUti.getProperty(KEY_DANANG_CITY));
 
     // get All City
     List<City> lstCity = cityServ.getAllCity();
@@ -101,12 +111,12 @@ public class MainController {
 
     // get type hotel By language
     List<TypeHotel> lstTypeHotel = typeHotService.getTypeHotByLangAndCategory(
-            appUti.getProperty(KEY_LANGUAGE_VN)
+            lang
             , appUti.getProperty(KEY_CATEGORY_HOTTEL));
 
     // get list sideline
     List<TypeHotel> lstTypeSideline = typeHotService.getTypeHotByLangAndCategory(
-            appUti.getProperty(KEY_LANGUAGE_VN)
+            lang
             , appUti.getProperty(KEY_CATEGORY_SIDELINE));
 
     // get tour of North
@@ -141,17 +151,17 @@ public class MainController {
         }
       }
 
-    // Bring list image banner to layout
+    // show list image banner to layout
     model.addAttribute("lstBanner", lstBanner);
-    //bring danang city to layout
+    // show danang city to layout
     model.addAttribute("ctDanang", ctDanang);
-    // bring list City to layout
+    // show list City to layout
     model.addAttribute("lstCity", lstCity);
-    // bring list type hotel to layout
+    // show list type hotel to layout
     model.addAttribute("lstTypeHotel", lstTypeHotel);
-    // bring list type hotel to layout
+    // show list type hotel to layout
     model.addAttribute("lstTypeSideline", lstTypeSideline);
-    // Bring all Tour to layout
+    // show all Tour to layout
     model.addAttribute("lstTourNorh", lstTourNorh);
     model.addAttribute("lstTourCentral", lstTourCentral);
     model.addAttribute("lstTourSouth", lstTourSouth);
@@ -162,6 +172,35 @@ public class MainController {
     return pageval;
   }
 
+  
+  @RequestMapping("/city")
+  public String city(
+          @RequestParam(value = "cityId") String cityId
+          , @RequestParam(value = "lang") String lang
+          , Model model) {
+    // New Instant AppConfigUtility
+    AppConfigUtility appUti = new AppConfigUtility();
+    // page value
+    String pageval = "";
+    // get City by id
+    City city = cityServ.getCityById(cityId);
+    // get all hotel in city
+    List<Hotel> lstHotel = city.getLstHotel();
+
+    List<ImageBanner> lstBanner = bannerService.getAllBannerByLangAndType(
+                                                lang
+                                                , appUti.getProperty(KEY_BANNER_TYPE_HOTEL));
+    // show list banner hotel in city to layout
+    model.addAttribute("lstBanner", lstBanner);
+    // show list hotel in city to layout
+    model.addAttribute("lstHotel",lstHotel);
+
+    pageval = appUti.getProperty(KEY_CHILLI_GUEST_CITY_PAGE);
+    
+    return pageval;
+  }
+  
+  
   /**
    * Go to page login
    * 

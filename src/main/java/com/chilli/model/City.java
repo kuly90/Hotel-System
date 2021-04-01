@@ -40,7 +40,7 @@ public class City  implements Serializable{
   @OneToMany(mappedBy = "city")
   private List<Hotel> lstHotel;
 
-  /* List Hotel */
+  /* List Banner */
   @OneToMany(mappedBy = "city")
   private List<ImageBanner> lstBanner;
 

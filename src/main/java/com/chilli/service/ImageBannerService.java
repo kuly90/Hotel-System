@@ -15,8 +15,9 @@ public interface ImageBannerService {
   /**
    * get banner by Language
    * @param lang
+   * @param type
    * @return list banner
    */
-  public List<ImageBanner> getAllBannerByLang(String lang);
+  public List<ImageBanner> getAllBannerByLangAndType(String lang, String type);
 
 }

@@ -25,14 +25,16 @@ public class ImageBannerServiceImpl implements ImageBannerService {
   
   /**
    * Get banner By language
+   * @param lang
+   * @param type
    * return lstBanner
    */
   @Override
-  public List<ImageBanner> getAllBannerByLang(String lang) {
+  public List<ImageBanner> getAllBannerByLangAndType(String lang, String type) {
     // create List Banner
     List<ImageBanner> lstBanner = new ArrayList<ImageBanner>();
     // get All banner
-    lstBanner = (List<ImageBanner>) bannerRepo.findByLanguage(lang);
+    lstBanner = (List<ImageBanner>) bannerRepo.findByLanguageAndType(lang, type);
     
     return lstBanner;
   }

@@ -22,5 +22,5 @@ public interface ImageBannerRepository extends CrudRepository<ImageBanner, Strin
    * @param lang
    * @return list image banner
    */
-  List<ImageBanner> findByLanguage(String lang);
+  List<ImageBanner> findByLanguageAndType(String lang, String type);
 }

@@ -29,11 +29,52 @@ public class ImageBanner implements Serializable {
 
   /* Content */
   @Column(name = "IMAGE_BANNER_CONTENT")
-  private String content;
+  private String content;
+  
+  /* type */
+  @Column(name = "IMAGE_BANNER_TYPE")
+  private String type;
   /* City */
   @ManyToOne
   @JoinColumn(name = "CITY_ID")
   private City city;
+  
+  /* hotel */
+  @ManyToOne
+  @JoinColumn(name = "HOTEL_ID")
+  private Hotel hotel;
+
+  /**
+   * get Hotel
+   * @return hotel
+   */
+  public Hotel getHotel() {
+    return hotel;
+}
+
+  /**
+   * set Hotel
+   * @param hotel
+   */
+  public void setHotel(Hotel hotel) {
+    this.hotel = hotel;
+  }
+
+/**
+   * Get Type of image banner
+   * @return type
+   */
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * Set type
+   * @param type
+   */
+  public void setType(String type) {
+    this.type = type;
+  }
 
   /**
    * get language

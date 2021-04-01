@@ -1,12 +1,14 @@
 package com.chilli.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,12 +25,16 @@ public class Hotel implements Serializable{
 
   /* hotel id */
   @Id
-  @Column(name = "HOLTEL_ID")
+  @Column(name = "HOTEL_ID")
   private String hotelId;
 
   /* Hotel Name */
   @Column(name = "HOTEL_NAME")
   private String hotelName;
+
+  /* Hotel Star */
+  @Column(name = "HOTEL_STAR")
+  private String hotelStar;
 
   /* Hotel Address */
   @Column(name = "HOTEL_ADRESS")
@@ -38,16 +44,43 @@ public class Hotel implements Serializable{
   @Column(name = "HOTEL_PHONE")
   private String hotelPhone;
 
+  /* Hotel Description */
+  @Column(name = "HOTEL_DESCRIPTION")
+  private String hotelDescription;
+  
   /* Hotel Status */
   @Column(name = "HOTEL_STATUS")
   private String hotelStatus;
+
+  /* language */
+  @Column(name = "LANGUAGE")
+  private String language;
 
   /* City */
   @ManyToOne
   @JoinColumn(name = "CITY_ID")
   private City city;
 
+  /* List Banner */
+  @OneToMany(mappedBy = "hotel")
+  private List<ImageBanner> lstBanner;
+  
   /**
+   * get language
+   * @return language
+   */
+  public String getLanguage() {
+    return language;
+  }
+
+  /**
+   * Set language
+   * @param language
+   */
+  public void setLanguage(String language) {
+    this.language = language;
+  }
+/**
    * get Hotel Id
    * @return hotelId String
    */
@@ -56,6 +89,22 @@ public class Hotel implements Serializable{
   }
 
   /**
+   * get number Star of hotel
+   * @return hotelStar
+   */
+  public String getHotelStar() {
+    return hotelStar;
+  }
+
+  /**
+   * set star Of hotel
+   * @param hotelStar
+   */
+  public void setHotelStar(String hotelStar) {
+    this.hotelStar = hotelStar;
+  }
+
+/**
    * Set Hotel Id
    * @param hotelId String
    */
@@ -64,6 +113,22 @@ public class Hotel implements Serializable{
   }
 
   /**
+   * get description
+   * @return hotelDescription
+   */
+  public String getHotelDescription() {
+    return hotelDescription;
+  }
+
+  /**
+   * set description
+   * @param hotelDescription
+   */
+  public void setHotelDescription(String hotelDescription) {
+    this.hotelDescription = hotelDescription;
+  }
+
+/**
    * get Hotel Name
    * @return hotelName String
    */

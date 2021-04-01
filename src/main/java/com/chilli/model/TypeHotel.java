@@ -51,8 +51,28 @@ public class TypeHotel implements Serializable{
   /* image */
   @Column(name = "IMAGE")
   private String image;
+  
+  /* content */
+  @Column(name = "CONTENT")
+  private String content;
 
   /**
+   * get Content
+   * @return content String
+   */
+  public String getContent() {
+    return content;
+  }
+
+  /**
+   * Set Content
+   * @param content
+   */
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+/**
    * get image
    * @return image String
    */

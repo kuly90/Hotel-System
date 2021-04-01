@@ -70,6 +70,9 @@ public class ComConstant {
   /* page hotel system */
   public static final String KEY_CHILLI_GUEST_INDEX_PAGE = "CHILLI_GUEST_INDEX_PAGE";
 
+  /* page hotels city */
+  public static final String KEY_CHILLI_GUEST_CITY_PAGE = "CHILLI_GUEST_CITY_PAGE";
+
   /* page error */
   public static final String KEY_CHILLI_ERROR_PAGE = "CHILLI_CUS_ERROR_PAGE";
 
@@ -88,9 +91,6 @@ public class ComConstant {
   /* language viet nam*/
   public static final String KEY_LANGUAGE_VN = "LANGUAGE_VN";
 
-  /* language english*/
-  public static final String KEY_LANGUAGE_EN = "LANGUAGE_EN";
-
   /* hotel category: hotel and resort */
   public static final String KEY_CATEGORY_HOTTEL = "CATEGORY_HOTTEL";
 
@@ -108,4 +108,10 @@ public class ComConstant {
   
   /* Tour North */
   public static final String KEY_TOUR_CATEGORY_WORLD = "TOUR_CATEGORY_WORLD";
+
+  /* banner city */
+  public static final String KEY_BANNER_TYPE_CITY = "BANNER_TYPE_CITY";
+
+  /* banner city */
+  public static final String KEY_BANNER_TYPE_HOTEL = "BANNER_TYPE_HOTEL";
 }

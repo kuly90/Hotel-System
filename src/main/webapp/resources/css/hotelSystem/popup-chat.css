@@ -161,7 +161,9 @@ input[type="text"]{
     word-break: break-all;
 }
 
-
+.wrapper {
+  z-index: 99;
+}
 @media (max-width:500px){
 
     .chat-popup{
