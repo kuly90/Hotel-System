@@ -30,6 +30,7 @@ import com.chilli.model.TourCategory;
 import com.chilli.model.TypeHotel;
 import com.chilli.service.CityService;
 import com.chilli.service.CustomerService;
+import com.chilli.service.HotelService;
 import com.chilli.service.ImageBannerService;
 import com.chilli.service.MessageResService;
 import com.chilli.service.TourCategoryService;
@@ -72,6 +73,9 @@ public class MainController {
   @Autowired
   TourCategoryService tourcateService;
 
+  @Autowired
+  HotelService hotelService;
+
   /**
    * go to page index
    * 
@@ -79,7 +83,7 @@ public class MainController {
    * @param model
    * @return page index
    */
-  @RequestMapping(value = { "/", "/guest" })
+  @RequestMapping(value = { REQUEST_ACTION_HOME, REQUEST_ACTION_HOME_GUEST })
   public String welcome(
           HttpServletRequest request
           , Model model) {
@@ -89,10 +93,10 @@ public class MainController {
     // new Instant Common
     common = new Common();
     // page value
-    String pageval = "";
+    String pageval = VALUE_NULL;
 
     // get language
-    String lang = request.getParameter("lang");
+    String lang = request.getParameter(REQUEST_PARAM_LANGUAGE);
     if (common.isNullOrEmpty(lang) ) {
       lang = appUti.getProperty(KEY_LANGUAGE_VN);
     }
@@ -172,20 +176,33 @@ public class MainController {
     return pageval;
   }
 
-  
-  @RequestMapping("/city")
+  /**
+   * show hotel in city
+   * @param cityId
+   * @param lang
+   * @param model
+   * @return page city
+   */
+  @RequestMapping(REQUEST_ACTION_CITY)
   public String city(
-          @RequestParam(value = "cityId") String cityId
-          , @RequestParam(value = "lang") String lang
+          @RequestParam(value = REQUEST_PARAM_CITYID) String cityId
+          , @RequestParam(value = REQUEST_PARAM_LANGUAGE) String lang
           , Model model) {
     // New Instant AppConfigUtility
     AppConfigUtility appUti = new AppConfigUtility();
     // page value
-    String pageval = "";
-    // get City by id
-    City city = cityServ.getCityById(cityId);
-    // get all hotel in city
-    List<Hotel> lstHotel = city.getLstHotel();
+    String pageval = VALUE_NULL;
+    // get all hotel in city sort by star
+    List<Hotel> lstHotelStar = hotelService.getHoltelByCitySortByStar(
+                                             cityId
+                                             , lang
+                                             , appUti.getProperty(KEY_HOTEL_STATUS_ON));
+
+ // get all hotel in city sort by star
+    List<Hotel> lstHotelName = hotelService.getHoltelByCitySortByName(
+                                             cityId
+                                             , lang
+                                             , appUti.getProperty(KEY_HOTEL_STATUS_ON));
 
     List<ImageBanner> lstBanner = bannerService.getAllBannerByLangAndType(
                                                 lang
@@ -193,7 +210,8 @@ public class MainController {
     // show list banner hotel in city to layout
     model.addAttribute("lstBanner", lstBanner);
     // show list hotel in city to layout
-    model.addAttribute("lstHotel",lstHotel);
+    model.addAttribute("lstHotelStar", lstHotelStar);
+    model.addAttribute("lstHotelName", lstHotelName);
 
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_CITY_PAGE);
     

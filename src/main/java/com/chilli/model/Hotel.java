@@ -56,6 +56,18 @@ public class Hotel implements Serializable{
   @Column(name = "LANGUAGE")
   private String language;
 
+  /* image */
+  @Column(name = "IMAGE_URL")
+  private String imageUrl;
+
+  /* average old price */
+  @Column(name = "AVERAGE_OLD_PRICE")
+  private Integer aveOldPrice;
+
+  /* average new price */
+  @Column(name = "AVERAGE_NEW_PRICE")
+  private Integer aveNewPrice;
+
   /* City */
   @ManyToOne
   @JoinColumn(name = "CITY_ID")
@@ -64,8 +76,72 @@ public class Hotel implements Serializable{
   /* List Banner */
   @OneToMany(mappedBy = "hotel")
   private List<ImageBanner> lstBanner;
-  
+
   /**
+   * Get average Old price
+   * @return
+   */
+  public Integer getAveOldPrice() {
+    return aveOldPrice;
+  }
+
+  /**
+   * set average Old Price
+   * @param aveOldPrice
+   */
+  public void setAveOldPrice(Integer aveOldPrice) {
+    this.aveOldPrice = aveOldPrice;
+  }
+
+  /**
+   * Get average new price
+   * @return aveNewPrice
+   */
+  public Integer getAveNewPrice() {
+    return aveNewPrice;
+  }
+
+  /**
+   * Set average New price
+   * @param aveNewPrice
+   */
+  public void setAveNewPrice(Integer aveNewPrice) {
+    this.aveNewPrice = aveNewPrice;
+  }
+
+/**
+   * get Image url
+   * @return imageUrl
+   */
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  /**
+   * Set image
+   * @param imageUrl
+   */
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+  /**
+   * Get lits banner of hotel
+   * @return list of banner
+   */
+  public List<ImageBanner> getLstBanner() {
+    return lstBanner;
+  }
+
+  /**
+   * Set lits banner of hotel
+   * @param lstBanner
+   */
+  public void setLstBanner(List<ImageBanner> lstBanner) {
+    this.lstBanner = lstBanner;
+  }
+
+/**
    * get language
    * @return language
    */
@@ -208,4 +284,71 @@ public class Hotel implements Serializable{
     this.city = city;
   }
 
+  /**
+   * get old price format
+   * @return currency
+   */
+  public String getOldPriceFormat() {
+    
+    String strOldPrice = String.valueOf(this.aveOldPrice);
+    if (this.language.equals("en")) {
+      if (strOldPrice.length() <= 3) {
+        strOldPrice = "$" + strOldPrice;
+      } else {
+        String pr1 = strOldPrice.substring(0, strOldPrice.length() - 3);
+        String pr2 = strOldPrice.substring(strOldPrice.length() - 3, strOldPrice.length());
+        strOldPrice = "$" + pr1 + "." + pr2;
+      }
+
+    } else {
+      if(strOldPrice.length() >= 7) {
+        String pr1 = strOldPrice.substring(0, strOldPrice.length() - 6);
+        String pr2 = strOldPrice.substring(strOldPrice.length() - 6, strOldPrice.length() - 3);
+        String pr3 = strOldPrice.substring(strOldPrice.length() - 3, strOldPrice.length());
+        strOldPrice = pr1 + "." + pr2 + "." + pr3;
+      } else {
+        String pr1 = strOldPrice.substring(0, strOldPrice.length() - 3);
+        String pr2 = strOldPrice.substring(strOldPrice.length() - 3, strOldPrice.length());
+        strOldPrice = pr1 + "." + pr2;
+      }
+        
+      
+    }
+    
+
+    return strOldPrice;
+  }
+
+  /**
+   * get old price format
+   * @return currency
+   */
+  public String getNewPriceFormat() {
+    String strNewPrice = String.valueOf(this.aveNewPrice);
+      if (this.language.equals("en")) {
+        if (strNewPrice.length() <= 3) {
+          strNewPrice = "$" + strNewPrice;
+        } else {
+          String pr1 = strNewPrice.substring(0, strNewPrice.length() - 3);
+          String pr2 = strNewPrice.substring(strNewPrice.length() - 3, strNewPrice.length());
+          strNewPrice = "$" + pr1 + "." + pr2;
+        }
+
+      } else {
+        if(strNewPrice.length() >= 7) {
+          String pr1 = strNewPrice.substring(0, strNewPrice.length() - 6);
+          String pr2 = strNewPrice.substring(strNewPrice.length() - 6, strNewPrice.length() - 3);
+          String pr3 = strNewPrice.substring(strNewPrice.length() - 3, strNewPrice.length());
+          strNewPrice = pr1 + "." + pr2 + "." + pr3;
+        } else {
+          String pr1 = strNewPrice.substring(0, strNewPrice.length() - 3);
+          String pr2 = strNewPrice.substring(strNewPrice.length() - 3, strNewPrice.length());
+          strNewPrice = pr1 + "." + pr2;
+        }
+          
+        
+      }
+
+      return strNewPrice;
+  }
 }

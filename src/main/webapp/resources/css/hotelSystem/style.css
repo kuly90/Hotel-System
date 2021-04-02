@@ -8683,7 +8683,11 @@ div.cs-select span {
   overflow: hidden;
 }
 #fh5co-hotel-section .hotel-content .hotel-grid .price small {
-  color: rgba(255, 255, 255, 0.5);
+  color: #F5F5F5;
+  font-size: .8em;
+}
+#fh5co-hotel-section .hotel-content .hotel-grid .price small:first-child {
+  text-decoration: line-through;
 }
 #fh5co-hotel-section .hotel-content .hotel-grid > div {
   width: 110px;
@@ -8852,6 +8856,19 @@ div.cs-select span {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
    display: -webkit-box;
+}
+
+.hotel-content .desc p {
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+.hotel-content .desc p:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .services {

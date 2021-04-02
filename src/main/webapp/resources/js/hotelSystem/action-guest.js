@@ -23,3 +23,7 @@ function goToCity(cityId) {
   var action = "/city?cityId=" + cityId + "&lang=" + getLang();
   window.location.href = action;
 }
+
+function hotelDetail(hotelId) {
+  alert(hotelId);
+}

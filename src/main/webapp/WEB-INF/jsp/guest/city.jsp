@@ -22,6 +22,7 @@ Version: 1.0.0 2021-03-01
     <link rel="icon" href="${contextPath}/resources/images/CLO.png" type="image/gif" sizes="20x20">
   
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Chat - Popup -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/hotelSystem/popup-chat.css">
@@ -45,7 +46,11 @@ Version: 1.0.0 2021-03-01
     <link href="${contextPath}/resources/css/hotelSystem/style.css" rel="stylesheet">
     <!-- Modernizr JS -->
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/modernizr-2.6.2.min.js"></script>
-    
+    <style>
+			.checked {
+			  color: orange;
+			}
+</style>
   </head>
   <body>
     <div id="fh5co-wrapper">
@@ -75,124 +80,79 @@ Version: 1.0.0 2021-03-01
             </ul>
           </div>
         </aside>
-  
-        <div id="fh5co-hotel-section">
+
+        <div class="wrap">
           <div class="container">
             <div class="row">
-              <div class="col-md-4">
-                <div class="hotel-content">
-                  <div class="hotel-grid"
-                    style="background-image: url(images/image-1.jpg);">
-                    <div class="price">
-                      <small>For as low as</small><span>$100/night</span>
+              <div id="availability">
+                <form action="#">
+                  <div class="a-col">
+                    <section>
+                      <select class="cs-select cs-skin-border">
+                        <option value="" disabled selected><spring:message code="cbo.search.hotel" /></option>
+                        <c:forEach var="item" items="${lstHotelName}">
+                          <option value="${item.hotelId}">${item.hotelName}</option>
+                        </c:forEach>
+                      </select>
+                    </section>
+                  </div>
+                  <div class="a-col alternate">
+                    <div class="input-field">
+                      <label for="date-start"><spring:message code="inp.search.checkin" /></label>
+                      <input type="text" class="form-control" id="date-start" />
                     </div>
-                    <a class="book-now text-center" href="#"><i
-                      class="ti-calendar"></i> Book Now</a>
                   </div>
-                  <div class="desc">
-                    <h3>
-                      <a href="#">Hotel Name</a>
-                    </h3>
-                    <p>Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <div class="a-col alternate">
+                    <div class="input-field">
+                      <label for="date-end"><spring:message code="inp.search.checkout" /></label>
+                      <input type="text" class="form-control" id="date-end" />
+                    </div>
                   </div>
+                  <div class="a-col action">
+                    <a href="#"> <span>Check</span> Availability
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div id="fh5co-hotel-section" style="padding: 0">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="section-title text-center">
+                  <h2><spring:message code="lbl.hotel.header" /></h2>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="hotel-content">
-                  <div class="hotel-grid"
-                    style="background-image: url(images/image-2.jpg);">
-                    <div class="price">
-                      <small>For as low as</small><span>$100/night</span>
+            </div>
+            <div class="row">
+              <c:forEach var = "item" items = "${lstHotelStar}">
+                <div class="col-md-4">
+                  <div class="hotel-content">
+                    <div class="hotel-grid"
+                      style="background-image: url(../../../resources/images/hotelSystem/hotel/${item.imageUrl});">
+                      <div class="price">
+                        <small>${item.getOldPriceFormat()}<spring:message code="lbl.hotel.unit.price" /></small>
+                        <small>${item.getNewPriceFormat()}<spring:message code="lbl.hotel.unit.price" /></small>
+                      </div>
+                      <a class="book-now text-center" href="#">
+                        <i class="ti-calendar"></i>
+                        <spring:message code="btn.book" />
+                      </a>
                     </div>
-                    <a class="book-now text-center" href="#"><i
-                      class="ti-calendar"></i> Book Now</a>
-                  </div>
-                  <div class="desc">
-                    <h3>
-                      <a href="#">Hotel Name</a>
-                    </h3>
-                    <p>Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="desc">
+                      <h3><a href="#">${item.hotelName}</a></h3>
+                      <input type="hidden" id = "hotel-star" value="${item.hotelStar}"/>
+                      <c:forEach var = "i" begin = "1" end = "5">
+                        <span class="fa fa-star checked"></span>
+                      </c:forEach>
+                      <p onclick="hotelDetail('${item.hotelId}');">${item.hotelDescription}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="hotel-content">
-                  <div class="hotel-grid"
-                    style="background-image: url(images/image-3.jpg);">
-                    <div class="price">
-                      <small>For as low as</small><span>$100/night</span>
-                    </div>
-                    <a class="book-now text-center" href="#"><i
-                      class="ti-calendar"></i> Book Now</a>
-                  </div>
-                  <div class="desc">
-                    <h3>
-                      <a href="#">Hotel Name</a>
-                    </h3>
-                    <p>Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="hotel-content">
-                  <div class="hotel-grid"
-                    style="background-image: url(images/image-4.jpg);">
-                    <div class="price">
-                      <small>For as low as</small><span>$100/night</span>
-                    </div>
-                    <a class="book-now text-center" href="#"><i
-                      class="ti-calendar"></i> Book Now</a>
-                  </div>
-                  <div class="desc">
-                    <h3>
-                      <a href="#">Hotel Name</a>
-                    </h3>
-                    <p>Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="hotel-content">
-                  <div class="hotel-grid"
-                    style="background-image: url(images/image-5.jpg);">
-                    <div class="price">
-                      <small>For as low as</small><span>$100/night</span>
-                    </div>
-                    <a class="book-now text-center" href="#"><i
-                      class="ti-calendar"></i> Book Now</a>
-                  </div>
-                  <div class="desc">
-                    <h3>
-                      <a href="#">Hotel Name</a>
-                    </h3>
-                    <p>Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="hotel-content">
-                  <div class="hotel-grid"
-                    style="background-image: url(images/image-6.jpg);">
-                    <div class="price">
-                      <small>For as low as</small><span>$100/night</span>
-                    </div>
-                    <a class="book-now text-center" href="#"><i
-                      class="ti-calendar"></i> Book Now</a>
-                  </div>
-                  <div class="desc">
-                    <h3>
-                      <a href="#">Hotel Name</a>
-                    </h3>
-                    <p>Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-              </div>
+              </c:forEach>
   
             </div>
           </div>

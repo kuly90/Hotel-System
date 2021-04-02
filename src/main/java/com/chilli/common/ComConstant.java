@@ -66,7 +66,24 @@ public class ComConstant {
   public static final String KEY_CHILLI_CUS_INDEX_PAGE = "CHILLI_CUS_INDEX_PAGE";
 
   // Code for hotel system
+  // Constant
+  /* null value */
+  public static final String VALUE_NULL = "";
 
+  /* request home action */
+  public static final String REQUEST_ACTION_HOME = "/";
+  public static final String REQUEST_ACTION_HOME_GUEST = "/guest";
+  
+  /* request city action */
+  public static final String REQUEST_ACTION_CITY = "/city";
+
+  /* request param city id */
+  public static final String REQUEST_PARAM_CITYID = "cityId";
+
+  /* request param language */
+  public static final String REQUEST_PARAM_LANGUAGE = "lang";
+
+  // key for get value property
   /* page hotel system */
   public static final String KEY_CHILLI_GUEST_INDEX_PAGE = "CHILLI_GUEST_INDEX_PAGE";
 
@@ -112,6 +129,12 @@ public class ComConstant {
   /* banner city */
   public static final String KEY_BANNER_TYPE_CITY = "BANNER_TYPE_CITY";
 
-  /* banner city */
+  /* banner hotel */
   public static final String KEY_BANNER_TYPE_HOTEL = "BANNER_TYPE_HOTEL";
+
+  /* hotel status: on */
+  public static final String KEY_HOTEL_STATUS_ON = "HOTEL_STATUS_ON";
+
+  /* hotel status: off */
+  public static final String KEY_HOTEL_STATUS_OFF = "HOTEL_STATUS_OFF";
 }

@@ -8,7 +8,7 @@ import com.chilli.model.City;
 /**
  * Get data form City Table
  * 
- * @author Mr ton That Cu Ly
+ * @author Mr Ton That Cu Ly
  * @version 1.0 2021-03-01
  *
  */

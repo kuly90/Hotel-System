@@ -19,28 +19,18 @@ Author: Mr.Ly
             <li><a href="#"><spring:message code="lbl.header.promotion"/></a></li>
             <li><a href="hotel.html" class="fh5co-sub-ddown"><spring:message code="lbl.header.tour"/></a>
               <ul class="fh5co-sub-menu">
-                <li><a href="#">Luxe Hotel</a></li>
-                <li><a href="#">Deluxe Hotel</a></li>
-                <li><a href="#" class="fh5co-sub-ddown">King Hotel</a>
+                <li><a href="#"><spring:message code="lbl.header.tour.north"/></a></li>
+                <li><a href="#"><spring:message code="lbl.header.tour.central"/></a></li>
+                <li><a href="#"><spring:message code="lbl.header.tour.south"/></a></li>
+                <li><a href="#" class="fh5co-sub-ddown"><spring:message code="lbl.header.tour.world"/></a>
                   <ul class="fh5co-sub-menu">
-                    <li>
-                      <a href="#" target="_blank">Build</a>
-                    </li>
-                    <li>
-                      <a href="#" target="_blank">Work</a>
-                    </li>
-                    <li>
-                      <a href="" target="_blank">Light</a>
-                    </li>
-                    <li>
-                      <a href="#" target="_blank">Relic</a>
-                    </li>
-                    <li>
-                      <a href="#" target="_blank">Display</a>
-                    </li>
-                    <li>
-                      <a href="#" target="_blank">Sprint</a>
-                    </li>
+                    <li><a href="#" target="_blank">ĐÔNG NAM Á</a></li>
+                    <li><a href="#" target="_blank">HÀN QUỐC</a></li>
+                    <li><a href="" target="_blank">NHẬT BẢN</a></li>
+                    <li><a href="#" target="_blank">TRUNG QUỐC</a></li>
+                    <li><a href="#" target="_blank">CHÂU ÂU</a></li>
+                    <li><a href="#" target="_blank">CHÂU MỸ</a></li>
+                    <li><a href="#" target="_blank">CHÂU ÚC</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Five Star Hotel</a></li>
