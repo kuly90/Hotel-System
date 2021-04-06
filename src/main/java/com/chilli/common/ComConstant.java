@@ -83,6 +83,9 @@ public class ComConstant {
   /* request param language */
   public static final String REQUEST_PARAM_LANGUAGE = "lang";
 
+  /* request param Page */
+  public static final String REQUEST_PARAM_PAGE = "page";
+
   // key for get value property
   /* page hotel system */
   public static final String KEY_CHILLI_GUEST_INDEX_PAGE = "CHILLI_GUEST_INDEX_PAGE";
@@ -137,4 +140,7 @@ public class ComConstant {
 
   /* hotel status: off */
   public static final String KEY_HOTEL_STATUS_OFF = "HOTEL_STATUS_OFF";
+
+  /* Number of hotel in city: 6 */
+  public static final String KEY_ITEM_HOTEL = "ITEM_HOTEL";
 }

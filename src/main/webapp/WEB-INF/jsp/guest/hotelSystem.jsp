@@ -223,7 +223,8 @@ Version: 1.0.0 2021-03-01
             <div class="row">
               <div class="col-md-12">
                 <div class="section-title">
-                  <h2 class="tour-category" onclick="searchTour('A')"> <spring:message code="title.tour.north" /></h2>
+                 <c:url var = "typeTourA" value = "A"/>
+                  <h2 class="tour-category" onclick="searchTour('${typeTourA}')"> <spring:message code="title.tour.north" /></h2>
                 </div>
               </div>
             </div>
@@ -243,7 +244,8 @@ Version: 1.0.0 2021-03-01
             <div class="row">
               <div class="col-md-12">
                 <div class="section-title">
-                  <h2 class="tour-category" onclick="searchTour('B')"> <spring:message code="title.tour.central" /></h2>
+                <c:url var = "typeTourB" value = "B"/>
+                  <h2 class="tour-category" onclick="searchTour('${typeTourB}')"> <spring:message code="title.tour.central" /></h2>
                 </div>
               </div>
             </div>
@@ -259,11 +261,11 @@ Version: 1.0.0 2021-03-01
                 </div>
               </c:forEach>
             </div>
-            
             <div class="row">
               <div class="col-md-12">
                 <div class="section-title">
-                  <h2 class="tour-category" onclick="searchTour('C')"> <spring:message code="title.tour.south" /></h2>
+                <c:url var = "typeTourC" value = "C"/>
+                  <h2 class="tour-category" onclick="searchTour('${typeTourC}')"> <spring:message code="title.tour.south" /></h2>
                 </div>
               </div>
             </div>
@@ -282,7 +284,8 @@ Version: 1.0.0 2021-03-01
             <div class="row">
               <div class="col-md-12">
                 <div class="section-title">
-                  <h2 class="tour-category" onclick="searchTour('D')"> <spring:message code="title.tour.world" /></h2>
+                <c:url var = "typeTourD" value = "D"/>
+                  <h2 class="tour-category" onclick="searchTour('${typeTourD}')"> <spring:message code="title.tour.world" /></h2>
                 </div>
               </div>
             </div>

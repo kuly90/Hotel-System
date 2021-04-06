@@ -187,6 +187,7 @@ public class MainController {
   public String city(
           @RequestParam(value = REQUEST_PARAM_CITYID) String cityId
           , @RequestParam(value = REQUEST_PARAM_LANGUAGE) String lang
+          , @RequestParam(value = REQUEST_PARAM_PAGE) String page
           , Model model) {
     // New Instant AppConfigUtility
     AppConfigUtility appUti = new AppConfigUtility();
@@ -207,11 +208,44 @@ public class MainController {
     List<ImageBanner> lstBanner = bannerService.getAllBannerByLangAndType(
                                                 lang
                                                 , appUti.getProperty(KEY_BANNER_TYPE_HOTEL));
+
+    // get pagination of hotel in city
+    // number of hotel in city 
+    int intNumberOfHotel = Integer.parseInt(appUti.getProperty(KEY_ITEM_HOTEL)) ;
+    // Integer of page
+    int intPage =  lstHotelStar.size() / intNumberOfHotel ;
+    // surplus of page
+    int surplus = lstHotelStar.size() % intNumberOfHotel ;
+    if (surplus > 0) {
+      intPage = intPage + 1;
+    }
+    // item start of hotel
+    int intStartHotel = (Integer.parseInt(page) - 1) * intNumberOfHotel;
+    // item end of hotel
+    int intEndHotel = ((Integer.parseInt(page) - 1) * 6) + intNumberOfHotel;
+    // list of hotel in city
+    List<Hotel> lstHotelPage = new ArrayList<Hotel>();
+    // get list hotel of end pagination
+    if (intPage == Integer.parseInt(page)) {
+      for (int i = lstHotelStar.size() - surplus; i < lstHotelStar.size(); i++) {
+        lstHotelPage.add(lstHotelStar.get(i));
+      }
+      // list hotel in pagination
+    } else {
+      for (int i = intStartHotel; i < intEndHotel; i++) {
+        lstHotelPage.add(lstHotelStar.get(i));
+      }
+    }
+
+    City city = cityServ.getCityById(cityId);
     // show list banner hotel in city to layout
     model.addAttribute("lstBanner", lstBanner);
     // show list hotel in city to layout
-    model.addAttribute("lstHotelStar", lstHotelStar);
+    model.addAttribute("city", city);
+    model.addAttribute("lstHotelPage", lstHotelPage);
     model.addAttribute("lstHotelName", lstHotelName);
+    model.addAttribute("intPage", intPage);
+    model.addAttribute("page", page);
 
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_CITY_PAGE);
     

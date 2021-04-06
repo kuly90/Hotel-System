@@ -47,9 +47,19 @@ Version: 1.0.0 2021-03-01
     <!-- Modernizr JS -->
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/modernizr-2.6.2.min.js"></script>
     <style>
-			.checked {
-			  color: orange;
-			}
+      .checked {
+        color: orange;
+      }
+      #fh5co-hotel-section .hotel-content .desc h3 {
+        margin: 0 0 5px 0;
+      }
+      .pagination .page-item {
+        cursor: pointer;
+      }
+      #currentPage {
+        background: #FF5722;
+        color: white;
+      }
 </style>
   </head>
   <body>
@@ -123,12 +133,12 @@ Version: 1.0.0 2021-03-01
             <div class="row">
               <div class="col-md-12">
                 <div class="section-title text-center">
-                  <h2><spring:message code="lbl.hotel.header" /></h2>
+                  <h2>${city.cityName}&nbsp;<spring:message code="lbl.hotel.header" /></h2>
                 </div>
               </div>
             </div>
             <div class="row">
-              <c:forEach var = "item" items = "${lstHotelStar}">
+              <c:forEach var = "item" items = "${lstHotelPage}">
                 <div class="col-md-4">
                   <div class="hotel-content">
                     <div class="hotel-grid"
@@ -137,23 +147,50 @@ Version: 1.0.0 2021-03-01
                         <small>${item.getOldPriceFormat()}<spring:message code="lbl.hotel.unit.price" /></small>
                         <small>${item.getNewPriceFormat()}<spring:message code="lbl.hotel.unit.price" /></small>
                       </div>
-                      <a class="book-now text-center" href="#">
+                      <a style="cursor: pointer;" class="book-now text-center" onclick="hotelDetail('${item.hotelId}');">
                         <i class="ti-calendar"></i>
                         <spring:message code="btn.book" />
                       </a>
                     </div>
                     <div class="desc">
                       <h3><a href="#">${item.hotelName}</a></h3>
-                      <input type="hidden" id = "hotel-star" value="${item.hotelStar}"/>
                       <c:forEach var = "i" begin = "1" end = "5">
-                        <span class="fa fa-star checked"></span>
+                        <c:choose>
+                          <c:when test="${i <= item.hotelStar}">
+                            <span class="fa fa-star checked"></span>
+                          </c:when>    
+                          <c:otherwise>
+                            <span class="fa fa-star"></span>
+                          </c:otherwise>
+                        </c:choose>
                       </c:forEach>
-                      <p onclick="hotelDetail('${item.hotelId}');">${item.hotelDescription}</p>
+                      <p title="${item.hotelDescription}" onclick="hotelDetail('${item.hotelId}');">${item.hotelDescription}</p>
                     </div>
                   </div>
                 </div>
               </c:forEach>
-  
+            </div>
+          </div>
+          <div class = "container">
+            <div class = "row" >
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                <c:url var = "pageNumberMinus" value = "-1"/>
+                  <li class="page-item"><a class="page-link" onclick="changePage('${pageNumberMinus}', '${intPage}')">Previous</a></li>
+                  <c:forEach var = "i" begin = "1" end = "${intPage}">
+                    <c:choose>
+                      <c:when test="${i == page}">
+                        <li class="page-item"><a id = "currentPage" class="page-link" onclick="changePage('${i}', '${intPage}')">${i}</a></li>
+                      </c:when>
+                      <c:otherwise>
+                        <li class="page-item"><a class="page-link" onclick="changePage('${i}', '${intPage}')">${i}</a></li>
+                      </c:otherwise>
+                    </c:choose>
+                  </c:forEach>
+                  <c:url var = "pageNumberPlus" value = "+1"/>
+                  <li class="page-item"><a class="page-link" onclick="changePage('${pageNumberPlus}', '${intPage}')">Next</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
