@@ -30,6 +30,8 @@ function goToCity(cityId) {
  * @returns page number
  */
 function changePage(pageNumber, totalPage) {
+  var scr = $(window).scrollTop();
+  var gg = $(window).height();
   var url = new URL(window.location.href);
   var currentPage = url.searchParams.get("page");
   var cityId = url.searchParams.get("cityId");

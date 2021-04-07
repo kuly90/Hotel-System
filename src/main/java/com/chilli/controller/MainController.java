@@ -222,13 +222,19 @@ public class MainController {
     // item start of hotel
     int intStartHotel = (Integer.parseInt(page) - 1) * intNumberOfHotel;
     // item end of hotel
-    int intEndHotel = ((Integer.parseInt(page) - 1) * 6) + intNumberOfHotel;
+    int intEndHotel = ((Integer.parseInt(page) - 1) * intNumberOfHotel) + intNumberOfHotel;
     // list of hotel in city
     List<Hotel> lstHotelPage = new ArrayList<Hotel>();
     // get list hotel of end pagination
     if (intPage == Integer.parseInt(page)) {
-      for (int i = lstHotelStar.size() - surplus; i < lstHotelStar.size(); i++) {
-        lstHotelPage.add(lstHotelStar.get(i));
+      if (surplus > 0) {
+        for (int i = lstHotelStar.size() - surplus; i < lstHotelStar.size(); i++) {
+          lstHotelPage.add(lstHotelStar.get(i));
+        }
+      } else {
+        for (int i = intStartHotel; i < intEndHotel; i++) {
+          lstHotelPage.add(lstHotelStar.get(i));
+        }
       }
       // list hotel in pagination
     } else {

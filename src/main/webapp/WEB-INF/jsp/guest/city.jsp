@@ -46,6 +46,8 @@ Version: 1.0.0 2021-03-01
     <link href="${contextPath}/resources/css/hotelSystem/style.css" rel="stylesheet">
     <!-- Modernizr JS -->
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/modernizr-2.6.2.min.js"></script>
+    <!-- ckeditor -->
+    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/ckeditor.js"></script>
     <style>
       .checked {
         color: orange;
@@ -194,7 +196,14 @@ Version: 1.0.0 2021-03-01
             </div>
           </div>
         </div>
-  
+
+        <div class="container">
+          <div class="row">
+             <!-- ckeditor -->
+            <textarea name="content" id="editor"></textarea>
+          </div>
+        </div>
+       
         <!-- Chat Popup -->
         <jsp:include page="../include/popupChat.jsp"></jsp:include>
         <!-- End Chat Popup -->
@@ -234,6 +243,12 @@ Version: 1.0.0 2021-03-01
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/popup-chat-main.js"></script>
     <!-- Guest request -->
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/action-guest.js"></script>
-  
+    <script>
+    $(window).load(
+      function() {
+    	  document.documentElement.scrollTop = 850;
+      });
+      ClassicEditor.create( document.querySelector( '#editor' ) );
+    </script>
   </body>
 </html>
