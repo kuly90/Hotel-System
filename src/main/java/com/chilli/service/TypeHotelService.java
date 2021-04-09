@@ -19,6 +19,15 @@ public interface TypeHotelService {
    * @param category
    * @return list of type hotel
    */
-  public List<TypeHotel> getTypeHotByLangAndCategory(String lang, String category);
+  public List<TypeHotel> getTypeHotByLangAndCategory(
+                                   String lang
+                                   , String category);
+
+  /**
+   * get type hotel and resort
+   * @param lang
+   * @return list TypeHotel
+   */
+ public  List<TypeHotel> getTypeHotelAndResort(String lang);
 
 }

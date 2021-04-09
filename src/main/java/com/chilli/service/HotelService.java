@@ -19,15 +19,23 @@ public interface HotelService {
    * @param status
    * @return list hotel
    */
-  public List<Hotel> getHoltelByCitySortByStar(String cityId, String lang, String status);
+  public List<Hotel> getHoltelByCitySortByStar(
+                              String cityId
+                              , String lang
+                              , String status);
 
   /**
    * Get hotel in city sort by hotel name
    * @param cityId
    * @param lang
    * @param status
+   * @param category
    * @return list hotel
    */
-  public List<Hotel> getHoltelByCitySortByName(String cityId, String lang, String status);
+  public List<Hotel> getHoltelByCitySortByName(
+                              String cityId
+                              , String lang
+                              , String status
+                              , String category);
 
 }

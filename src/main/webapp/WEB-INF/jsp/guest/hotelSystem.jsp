@@ -84,7 +84,7 @@ Version: 1.0.0 2021-03-01
                     <section>
                       <select class="cs-select cs-skin-border">
                         <option value="" disabled selected><spring:message code="cbo.search.city" /></option>
-                        <c:forEach var="city" items="${lstCity}">
+                        <c:forEach var="city" items="${cboCity}">
                           <option value="${city.cityId}">${city.cityName}</option>
                         </c:forEach>
                       </select>

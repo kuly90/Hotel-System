@@ -18,6 +18,20 @@ public interface ImageBannerService {
    * @param type
    * @return list banner
    */
-  public List<ImageBanner> getAllBannerByLangAndType(String lang, String type);
+  public List<ImageBanner> getAllBannerByLangAndType(
+                                       String lang
+                                       , String type);
+
+  /**
+   * get banner by city
+   * @param cityId
+   * @param type
+   * @param lang
+   * @return list banner
+   */
+  public List<ImageBanner> getAllBannerByCity(
+		                               String cityId
+		                               , String type
+		                               , String lang);
 
 }

@@ -51,20 +51,23 @@ public class HotelServiceIplm implements HotelService{
    * @param cityId
    * @param lang
    * @param status
+   * @param category
    * @return list of hotel
    */
   @Override
   public List<Hotel> getHoltelByCitySortByName(
         String cityId
         , String lang
-        , String status) {
+        , String status
+        , String category) {
    // new instant Array List of Hotel
    List<Hotel> lstHotel = new ArrayList<Hotel>();
    // get list hotel
    lstHotel = hotelRepo.findByCityLangStatusASC(
                               cityId
                               , lang
-                              , status);
+                              , status
+                              , category);
 
     return lstHotel;
   }

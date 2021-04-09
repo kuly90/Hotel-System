@@ -111,8 +111,11 @@ public class ComConstant {
   /* language viet nam*/
   public static final String KEY_LANGUAGE_VN = "LANGUAGE_VN";
 
-  /* hotel category: hotel and resort */
-  public static final String KEY_CATEGORY_HOTTEL = "CATEGORY_HOTTEL";
+  /* Type hotel category: hotel */
+  public static final String KEY_CATEGORY_HOTEL = "CATEGORY_HOTEL";
+
+  /* Type hotel category:resort */
+  public static final String KEY_CATEGORY_RESORT = "CATEGORY_RESORT";
 
   /* hotel category: hotel and resort */
   public static final String KEY_CATEGORY_SIDELINE = "CATEGORY_SIDELINE";
@@ -143,4 +146,5 @@ public class ComConstant {
 
   /* Number of hotel in city: 6 */
   public static final String KEY_ITEM_HOTEL = "ITEM_HOTEL";
+
 }

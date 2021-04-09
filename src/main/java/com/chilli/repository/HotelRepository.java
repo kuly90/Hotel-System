@@ -39,15 +39,18 @@ public interface HotelRepository extends CrudRepository<Hotel, String>{
    * @param cityId
    * @param lang
    * @param status
+   * @param category
    * @return list hotel
    */
   @Query(value = "SELECT * FROM hotel\n"
                + " WHERE CITY_ID = ?1\n"
                + " AND LANGUAGE = ?2\n"
                + " AND HOTEL_STATUS = ?3\n"
+               + " AND CATEGORY = ?4\n"
                + " ORDER BY HOTEL_NAME ASC", nativeQuery = true)
   List<Hotel> findByCityLangStatusASC(
                             String cityId
                             , String lang
-                            , String status);
+                            , String status
+                            , String category);
 }

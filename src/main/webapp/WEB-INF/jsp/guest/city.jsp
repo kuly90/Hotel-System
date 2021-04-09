@@ -108,6 +108,16 @@ Version: 1.0.0 2021-03-01
                       </select>
                     </section>
                   </div>
+                  <div class="a-col">
+                    <section>
+                      <select class="cs-select cs-skin-border">
+                        <option value="" disabled selected><spring:message code="cbo.search.resort" /></option>
+                        <c:forEach var="item" items="${lstResortName}">
+                          <option value="${item.hotelId}">${item.hotelName}</option>
+                        </c:forEach>
+                      </select>
+                    </section>
+                  </div>
                   <div class="a-col alternate">
                     <div class="input-field">
                       <label for="date-start"><spring:message code="inp.search.checkin" /></label>

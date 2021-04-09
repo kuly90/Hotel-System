@@ -30,12 +30,39 @@ public class ImageBannerServiceImpl implements ImageBannerService {
    * return lstBanner
    */
   @Override
-  public List<ImageBanner> getAllBannerByLangAndType(String lang, String type) {
+  public List<ImageBanner> getAllBannerByLangAndType(
+                                 String lang
+                                 , String type) {
     // create List Banner
     List<ImageBanner> lstBanner = new ArrayList<ImageBanner>();
     // get All banner
-    lstBanner = (List<ImageBanner>) bannerRepo.findByLanguageAndType(lang, type);
+    lstBanner = (List<ImageBanner>) bannerRepo.findByLanguageAndType(
+                                                     lang
+                                                     , type);
     
+    return lstBanner;
+  }
+
+  /**
+   * Get banner By City
+   * @param cityId
+   * @param type
+   * @param lang
+   * @return lstBanner
+   */
+  @Override
+  public List<ImageBanner> getAllBannerByCity(
+                                 String cityId
+                                 , String type
+                                 , String lang) {
+    // create List Banner
+    List<ImageBanner> lstBanner = new ArrayList<ImageBanner>();
+    // get All banner
+    lstBanner = (List<ImageBanner>) bannerRepo.findBannerCity(
+                                                   cityId
+                                                   , type
+                                                   , lang);
+
     return lstBanner;
   }
 }

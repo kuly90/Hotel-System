@@ -17,6 +17,13 @@ Author: Mr.Ly
           <ul class="sf-menu" id="fh5co-primary-menu">
             <li><a class="active" href="/"><spring:message code="lbl.header.home"/></a></li>
             <li><a href="#"><spring:message code="lbl.header.promotion"/></a></li>
+            <li><a href="hotel.html" class="fh5co-sub-ddown"><spring:message code="lbl.header.city"/></a>
+              <ul class="fh5co-sub-menu" style="height: 15em; overflow: auto;">
+                <c:forEach var = "item" items = "${cboCity}">
+                  <li><a href="#">${item.cityName}</a></li>
+                </c:forEach>
+              </ul>
+            </li>
             <li><a href="hotel.html" class="fh5co-sub-ddown"><spring:message code="lbl.header.tour"/></a>
               <ul class="fh5co-sub-menu">
                 <li><a href="#"><spring:message code="lbl.header.tour.north"/></a></li>

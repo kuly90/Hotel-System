@@ -68,6 +68,10 @@ public class Hotel implements Serializable{
   @Column(name = "AVERAGE_NEW_PRICE")
   private Integer aveNewPrice;
 
+  /* category 1: hotel - 3:resort */
+  @Column(name = "CATEGORY")
+  private Integer category;
+
   /* City */
   @ManyToOne
   @JoinColumn(name = "CITY_ID")
@@ -78,6 +82,22 @@ public class Hotel implements Serializable{
   private List<ImageBanner> lstBanner;
 
   /**
+   * get category
+   * @return category
+   */
+  public Integer getCategory() {
+    return category;
+  }
+
+  /**
+   * set category
+   * @param category
+   */
+  public void setCategory(Integer category) {
+    this.category = category;
+  }
+
+/**
    * Get average Old price
    * @return
    */

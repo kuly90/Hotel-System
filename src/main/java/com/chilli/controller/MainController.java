@@ -1,6 +1,7 @@
 package com.chilli.controller;
 
 import static com.chilli.common.ComConstant.*;
+import static com.chilli.common.ComModelConstant.*;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -79,11 +80,12 @@ public class MainController {
   /**
    * go to page index
    * 
-   *  @param request
+   * @param request
    * @param model
    * @return page index
    */
-  @RequestMapping(value = { REQUEST_ACTION_HOME, REQUEST_ACTION_HOME_GUEST })
+  @RequestMapping(value = { REQUEST_ACTION_HOME
+                            , REQUEST_ACTION_HOME_GUEST })
   public String welcome(
           HttpServletRequest request
           , Model model) {
@@ -110,13 +112,12 @@ public class MainController {
 
     // get All City
     List<City> lstCity = cityServ.getAllCity();
+    List<City> cboCity = cityServ.getAllCity();
     // remove da nang city
     lstCity.remove(ctDanang);
 
     // get type hotel By language
-    List<TypeHotel> lstTypeHotel = typeHotService.getTypeHotByLangAndCategory(
-            lang
-            , appUti.getProperty(KEY_CATEGORY_HOTTEL));
+    List<TypeHotel> lstTypeHotel = typeHotService.getTypeHotelAndResort(lang);
 
     // get list sideline
     List<TypeHotel> lstTypeSideline = typeHotService.getTypeHotByLangAndCategory(
@@ -156,20 +157,21 @@ public class MainController {
       }
 
     // show list image banner to layout
-    model.addAttribute("lstBanner", lstBanner);
+    model.addAttribute(LIST_BANNER, lstBanner);
     // show danang city to layout
-    model.addAttribute("ctDanang", ctDanang);
+    model.addAttribute(DANANG_CITY, ctDanang);
     // show list City to layout
-    model.addAttribute("lstCity", lstCity);
+    model.addAttribute(LIST_CITY, lstCity);
+    model.addAttribute(CBO_CITY, cboCity);
     // show list type hotel to layout
-    model.addAttribute("lstTypeHotel", lstTypeHotel);
+    model.addAttribute(LIST_TYPE_HOTEL, lstTypeHotel);
     // show list type hotel to layout
-    model.addAttribute("lstTypeSideline", lstTypeSideline);
+    model.addAttribute(LIST_TYPE_SIDELINE, lstTypeSideline);
     // show all Tour to layout
-    model.addAttribute("lstTourNorh", lstTourNorh);
-    model.addAttribute("lstTourCentral", lstTourCentral);
-    model.addAttribute("lstTourSouth", lstTourSouth);
-    model.addAttribute("lstTourWorld", lstTourWorld);
+    model.addAttribute(LIST_TOUR_NORTH, lstTourNorh);
+    model.addAttribute(LIST_TOUR_CENTRAL, lstTourCentral);
+    model.addAttribute(LIST_TOUR_SOUTH, lstTourSouth);
+    model.addAttribute(LIST_TOUR_WORLD, lstTourWorld);
     
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_INDEX_PAGE);
 
@@ -181,6 +183,7 @@ public class MainController {
    * @param cityId
    * @param lang
    * @param model
+   * @param page
    * @return page city
    */
   @RequestMapping(REQUEST_ACTION_CITY)
@@ -199,66 +202,84 @@ public class MainController {
                                              , lang
                                              , appUti.getProperty(KEY_HOTEL_STATUS_ON));
 
- // get all hotel in city sort by star
+    // get all hotel in city sort by name
     List<Hotel> lstHotelName = hotelService.getHoltelByCitySortByName(
                                              cityId
                                              , lang
-                                             , appUti.getProperty(KEY_HOTEL_STATUS_ON));
+                                             , appUti.getProperty(KEY_HOTEL_STATUS_ON)
+                                             , appUti.getProperty(KEY_CATEGORY_HOTEL));
+ // get all resort in city sort by name
+    List<Hotel> lstResortName = hotelService.getHoltelByCitySortByName(
+                                             cityId
+                                             , lang
+                                             , appUti.getProperty(KEY_HOTEL_STATUS_ON)
+                                             , appUti.getProperty(KEY_CATEGORY_RESORT));
+    // get banner of hotel
+    List<ImageBanner> lstBanner = bannerService.getAllBannerByCity(
+                                             cityId
+                                             , appUti.getProperty(KEY_BANNER_TYPE_HOTEL)
+                                             , lang);
 
-    List<ImageBanner> lstBanner = bannerService.getAllBannerByLangAndType(
-                                                lang
-                                                , appUti.getProperty(KEY_BANNER_TYPE_HOTEL));
-
+    // list of hotel in city
+    List<Hotel> lstHotelPage = new ArrayList<Hotel>();
+    int intPage = 0;
     // get pagination of hotel in city
     // number of hotel in city 
     int intNumberOfHotel = Integer.parseInt(appUti.getProperty(KEY_ITEM_HOTEL)) ;
-    // Integer of page
-    int intPage =  lstHotelStar.size() / intNumberOfHotel ;
-    // surplus of page
-    int surplus = lstHotelStar.size() % intNumberOfHotel ;
-    if (surplus > 0) {
-      intPage = intPage + 1;
-    }
-    // item start of hotel
-    int intStartHotel = (Integer.parseInt(page) - 1) * intNumberOfHotel;
-    // item end of hotel
-    int intEndHotel = ((Integer.parseInt(page) - 1) * intNumberOfHotel) + intNumberOfHotel;
-    // list of hotel in city
-    List<Hotel> lstHotelPage = new ArrayList<Hotel>();
-    // get list hotel of end pagination
-    if (intPage == Integer.parseInt(page)) {
+    // hotel more than 1
+    if (lstHotelStar.size() > 0) {
+      // Integer of page
+      intPage =  lstHotelStar.size() / intNumberOfHotel ;
+      // surplus of page
+      int surplus = lstHotelStar.size() % intNumberOfHotel ;
       if (surplus > 0) {
-        for (int i = lstHotelStar.size() - surplus; i < lstHotelStar.size(); i++) {
-          lstHotelPage.add(lstHotelStar.get(i));
+        intPage = intPage + 1;
+      }
+      // item start of hotel
+      int intStartHotel = (Integer.parseInt(page) - 1) * intNumberOfHotel;
+      // item end of hotel
+      int intEndHotel = ((Integer.parseInt(page) - 1) * intNumberOfHotel) + intNumberOfHotel;
+      
+      // get list hotel of end pagination
+      if (intPage == Integer.parseInt(page)) {
+        if (surplus > 0) {
+          for (int i = lstHotelStar.size() - surplus; i < lstHotelStar.size(); i++) {
+            lstHotelPage.add(lstHotelStar.get(i));
+          }
+        } else {
+          for (int i = intStartHotel; i < intEndHotel; i++) {
+            lstHotelPage.add(lstHotelStar.get(i));
+          }
         }
+        // list hotel in pagination
       } else {
         for (int i = intStartHotel; i < intEndHotel; i++) {
           lstHotelPage.add(lstHotelStar.get(i));
         }
       }
-      // list hotel in pagination
-    } else {
-      for (int i = intStartHotel; i < intEndHotel; i++) {
-        lstHotelPage.add(lstHotelStar.get(i));
-      }
     }
 
+    // get session list city
+    List<City> cboCity = cityServ.getAllCity();
     City city = cityServ.getCityById(cityId);
     // show list banner hotel in city to layout
-    model.addAttribute("lstBanner", lstBanner);
+    model.addAttribute(LIST_BANNER, lstBanner);
     // show list hotel in city to layout
-    model.addAttribute("city", city);
-    model.addAttribute("lstHotelPage", lstHotelPage);
-    model.addAttribute("lstHotelName", lstHotelName);
-    model.addAttribute("intPage", intPage);
-    model.addAttribute("page", page);
+    model.addAttribute(CITY, city);
+    model.addAttribute(LIST_HOTEL_PAGE, lstHotelPage);
+    model.addAttribute(LIST_HOTEL_NAME, lstHotelName);
+    model.addAttribute(LIST_RESORT_NAME, lstResortName);
+    model.addAttribute(INT_PAGE, intPage);
+    model.addAttribute(PAGE, page);
+    model.addAttribute(CBO_CITY, cboCity);
 
     pageval = appUti.getProperty(KEY_CHILLI_GUEST_CITY_PAGE);
     
     return pageval;
   }
-  
-  
+
+
+
   /**
    * Go to page login
    * 
