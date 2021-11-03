@@ -25,7 +25,17 @@ public interface TypeHotelRepository extends CrudRepository<TypeHotel, String>{
    */
   List<TypeHotel> findByLanguageAndCategory(String lang, String category);
   
-  @Query(value = " SELECT * FROM type_hotel\n"
+  @Query(value = " SELECT\n"
+               + " TYPE_ID AS TYPE_ID,\n"
+               + " TYPE_NAME AS TYPE_NAME,\n"
+               + " CATEGORY AS CATEGORY,\n"
+               + " LANGUAGE AS LANGUAGE,\n"
+               + " DATA_TAB AS DATA_TAB,\n"
+               + " CLASS_CSS AS CLASS_CSS,\n"
+               + " CLASS_CSS2 AS CLASS_CSS2,\n"
+               + " IMAGE AS IMAGE\n,"
+               + " CONTENT AS CONTENT\n"
+               + " FROM type_hotel\n"
                + " WHERE "
                + " (\n"
                + " CATEGORY = '1' AND LANGUAGE = ?1\n"

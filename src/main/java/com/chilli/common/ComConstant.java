@@ -70,15 +70,23 @@ public class ComConstant {
   /* null value */
   public static final String VALUE_NULL = "";
 
+  
+  //key for request action controller
   /* request home action */
   public static final String REQUEST_ACTION_HOME = "/";
   public static final String REQUEST_ACTION_HOME_GUEST = "/guest";
   
   /* request city action */
   public static final String REQUEST_ACTION_CITY = "/city";
+  
+  /* request hotel detail action */
+  public static final String REQUEST_ACTION_HOTEL_DETAIL = "/hotelDetail";
 
   /* request param city id */
-  public static final String REQUEST_PARAM_CITYID = "cityId";
+  public static final String REQUEST_PARAM_CITY_ID = "cityId";
+  
+  /* request param hotel id */
+  public static final String REQUEST_PARAM_HOTEL_ID = "hotelId";
 
   /* request param language */
   public static final String REQUEST_PARAM_LANGUAGE = "lang";
@@ -92,6 +100,9 @@ public class ComConstant {
 
   /* page hotels city */
   public static final String KEY_CHILLI_GUEST_CITY_PAGE = "CHILLI_GUEST_CITY_PAGE";
+  
+  /* page hotel detail */
+  public static final String KEY_CHILLI_GUEST_HOTEL_PAGE = "CHILLI_GUEST_HOTEL_PAGE";
 
   /* page error */
   public static final String KEY_CHILLI_ERROR_PAGE = "CHILLI_CUS_ERROR_PAGE";

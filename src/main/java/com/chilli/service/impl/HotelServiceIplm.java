@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.chilli.model.Hotel;
 import com.chilli.repository.HotelRepository;
@@ -17,6 +18,7 @@ import com.chilli.service.HotelService;
  *
  */
 @Service
+@Transactional
 public class HotelServiceIplm implements HotelService{
 
   /* Hotel Repository */

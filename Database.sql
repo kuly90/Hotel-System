@@ -32,6 +32,25 @@ CREATE TABLE `hotel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 
+DROP TABLE IF EXISTS `room`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `room` (
+  `ROOM_ID` CHAR(6) NOT NULL PRIMARY KEY,
+  `ROOM_LOCATION` NVARCHAR(100) NOT NULL,
+  `ROOM_DESCRIPTION` NVARCHAR(500),
+  `ROOM_STATUS` CHAR(1) NOT NULL,
+  `LANGUAGE` CHAR(2) NOT NULL,
+  `IMAGE_URL` NVARCHAR(500),
+  `OLD_PRICE` INT(11),
+  `NEW_PRICE` INT(11),
+  `CATEGORY` CHAR(1),
+  `HOTEL_ID` CHAR(3) NOT NULL,
+  UNIQUE KEY `ROOM_ID_UNIQUE` (`ROOM_ID`),
+  CONSTRAINT rom_hol_fk FOREIGN KEY (HOTEL_ID) REFERENCES hotel(HOTEL_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+
 DROP TABLE IF EXISTS `image_banner`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

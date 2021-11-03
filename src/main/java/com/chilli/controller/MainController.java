@@ -188,7 +188,7 @@ public class MainController {
    */
   @RequestMapping(REQUEST_ACTION_CITY)
   public String city(
-          @RequestParam(value = REQUEST_PARAM_CITYID) String cityId
+          @RequestParam(value = REQUEST_PARAM_CITY_ID) String cityId
           , @RequestParam(value = REQUEST_PARAM_LANGUAGE) String lang
           , @RequestParam(value = REQUEST_PARAM_PAGE) String page
           , Model model) {
@@ -208,7 +208,7 @@ public class MainController {
                                              , lang
                                              , appUti.getProperty(KEY_HOTEL_STATUS_ON)
                                              , appUti.getProperty(KEY_CATEGORY_HOTEL));
- // get all resort in city sort by name
+    // get all resort in city sort by name
     List<Hotel> lstResortName = hotelService.getHoltelByCitySortByName(
                                              cityId
                                              , lang
@@ -224,7 +224,7 @@ public class MainController {
     List<Hotel> lstHotelPage = new ArrayList<Hotel>();
     int intPage = 0;
     // get pagination of hotel in city
-    // number of hotel in city 
+    // number of hotel in city in a page
     int intNumberOfHotel = Integer.parseInt(appUti.getProperty(KEY_ITEM_HOTEL)) ;
     // hotel more than 1
     if (lstHotelStar.size() > 0) {
@@ -278,7 +278,24 @@ public class MainController {
     return pageval;
   }
 
+  @RequestMapping(REQUEST_ACTION_HOTEL_DETAIL)
+  public String hotelDetail(
+          @RequestParam(value = REQUEST_PARAM_HOTEL_ID) String hotelId
+          , @RequestParam(value = REQUEST_PARAM_LANGUAGE) String lang
+          , @RequestParam(value = REQUEST_PARAM_PAGE) String page
+          , Model model) {
+    // New Instant AppConfigUtility
+    AppConfigUtility appUti = new AppConfigUtility();
+    // page value
+    String pageval = VALUE_NULL;
+    pageval = appUti.getProperty(KEY_CHILLI_GUEST_HOTEL_PAGE);
+    
+    return pageval;
+  }
+  
 
+  
+  
 
   /**
    * Go to page login

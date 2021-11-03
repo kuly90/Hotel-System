@@ -30,8 +30,7 @@ function goToCity(cityId) {
  * @returns page number
  */
 function changePage(pageNumber, totalPage) {
-  var scr = $(window).scrollTop();
-  var gg = $(window).height();
+
   var url = new URL(window.location.href);
   var currentPage = url.searchParams.get("page");
   var cityId = url.searchParams.get("cityId");
@@ -50,5 +49,6 @@ function changePage(pageNumber, totalPage) {
 }
 
 function hotelDetail(hotelId) {
-  alert(hotelId);
+  var action = "/hotelDetail?hotelId=" + hotelId + "&lang=" + getLang() + "&page=1";
+  window.location.href = action;
 }

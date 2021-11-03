@@ -24,7 +24,21 @@ public interface HotelRepository extends CrudRepository<Hotel, String>{
    * @param status
    * @return list hotel
    */
-  @Query(value = "SELECT * FROM hotel\n"
+  @Query(value = "SELECT \n"
+               + " HOTEL_ID AS HOTEL_ID,\n"
+               + " HOTEL_NAME AS HOTEL_NAME,\n"
+               + " HOTEL_STAR AS HOTEL_STAR,\n"
+               + " HOTEL_ADRESS AS HOTEL_ADRESS,\n"
+               + " HOTEL_PHONE AS HOTEL_PHONE,\n"
+               + " HOTEL_DESCRIPTION AS HOTEL_DESCRIPTION,\n"
+               + " HOTEL_STATUS AS HOTEL_STATUS,\n"
+               + " LANGUAGE AS LANGUAGE,\n"
+               + " IMAGE_URL AS IMAGE_URL,\n"
+               + " AVERAGE_OLD_PRICE AS AVERAGE_OLD_PRICE,\n"
+               + " AVERAGE_NEW_PRICE AS AVERAGE_NEW_PRICE,\n"
+               + " CATEGORY AS CATEGORY,\n"
+               + " CITY_ID AS CITY_ID\n"
+               + " FROM hotel\n"
                + " WHERE CITY_ID = ?1\n"
                + " AND LANGUAGE = ?2\n"
                + " AND HOTEL_STATUS = ?3\n"
@@ -42,7 +56,10 @@ public interface HotelRepository extends CrudRepository<Hotel, String>{
    * @param category
    * @return list hotel
    */
-  @Query(value = "SELECT * FROM hotel\n"
+  @Query(value = "SELECT"
+               + " HOTEL_ID AS HOTEL_ID,\n"
+               + " HOTEL_NAME AS HOLTEL_NAME\n"
+               + " FROM hotel\n"
                + " WHERE CITY_ID = ?1\n"
                + " AND LANGUAGE = ?2\n"
                + " AND HOTEL_STATUS = ?3\n"

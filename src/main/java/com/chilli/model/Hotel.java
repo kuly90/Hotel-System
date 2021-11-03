@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "hotel")
-public class Hotel implements Serializable{
+public class Hotel implements Serializable {
   private static final long serialVersionUID = 1L;
 
   /* hotel id */
@@ -70,7 +70,7 @@ public class Hotel implements Serializable{
 
   /* category 1: hotel - 3:resort */
   @Column(name = "CATEGORY")
-  private Integer category;
+  private String category;
 
   /* City */
   @ManyToOne
@@ -85,7 +85,7 @@ public class Hotel implements Serializable{
    * get category
    * @return category
    */
-  public Integer getCategory() {
+  public String getCategory() {
     return category;
   }
 
@@ -93,7 +93,7 @@ public class Hotel implements Serializable{
    * set category
    * @param category
    */
-  public void setCategory(Integer category) {
+  public void setCategory(String category) {
     this.category = category;
   }
 
@@ -309,7 +309,7 @@ public class Hotel implements Serializable{
    * @return currency
    */
   public String getOldPriceFormat() {
-    
+
     String strOldPrice = String.valueOf(this.aveOldPrice);
     if (this.language.equals("en")) {
       if (strOldPrice.length() <= 3) {
@@ -319,7 +319,6 @@ public class Hotel implements Serializable{
         String pr2 = strOldPrice.substring(strOldPrice.length() - 3, strOldPrice.length());
         strOldPrice = "$" + pr1 + "." + pr2;
       }
-
     } else {
       if(strOldPrice.length() >= 7) {
         String pr1 = strOldPrice.substring(0, strOldPrice.length() - 6);
@@ -331,11 +330,7 @@ public class Hotel implements Serializable{
         String pr2 = strOldPrice.substring(strOldPrice.length() - 3, strOldPrice.length());
         strOldPrice = pr1 + "." + pr2;
       }
-        
-      
     }
-    
-
     return strOldPrice;
   }
 
@@ -353,7 +348,6 @@ public class Hotel implements Serializable{
           String pr2 = strNewPrice.substring(strNewPrice.length() - 3, strNewPrice.length());
           strNewPrice = "$" + pr1 + "." + pr2;
         }
-
       } else {
         if(strNewPrice.length() >= 7) {
           String pr1 = strNewPrice.substring(0, strNewPrice.length() - 6);
@@ -365,10 +359,7 @@ public class Hotel implements Serializable{
           String pr2 = strNewPrice.substring(strNewPrice.length() - 3, strNewPrice.length());
           strNewPrice = pr1 + "." + pr2;
         }
-          
-        
       }
-
       return strNewPrice;
   }
 }

@@ -3,6 +3,7 @@ A Design by CU LY
 Author: Mr.Ly
 Version: 1.0.0 2021-03-01
 -->
+
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,7 +11,7 @@ Version: 1.0.0 2021-03-01
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html class="no-js">
+<html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,21 +49,6 @@ Version: 1.0.0 2021-03-01
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/modernizr-2.6.2.min.js"></script>
     <!-- ckeditor -->
     <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/ckeditor.js"></script>
-    <style>
-      .checked {
-        color: orange;
-      }
-      #fh5co-hotel-section .hotel-content .desc h3 {
-        margin: 0 0 5px 0;
-      }
-      .pagination .page-item {
-        cursor: pointer;
-      }
-      #currentPage {
-        background: #FF5722;
-        color: white;
-      }
-    </style>
   </head>
   <body>
     <div id="fh5co-wrapper">
@@ -74,13 +60,13 @@ Version: 1.0.0 2021-03-01
           <div class="flexslider js-fullheight">
             <ul class="slides">
               <c:forEach var="banner" items="${lstBanner}">
-                <li style="background-image: url(../../../resources/images/hotelSystem/banner/hotel/${banner.imageBannerUrl});">
+                <li style="background-image: url(../../../resources/images/hotelSystem/room/${banner.roomImgUrl});">
                   <div class="overlay-gradient"></div>
                   <div class="container">
                     <div class="col-md-12 col-md-offset-0 text-center slider-text">
                       <div class="slider-text-inner js-fullheight">
                         <div class="desc">
-                          <p><span>${banner.hotel.hotelName}</span></p>
+<%--                           <p><span>${banner.room.hotelName}</span></p> --%>
                           <h2>${banner.content}</h2>
                           <p><a href="#" class="btn btn-primary btn-lg"><spring:message code="btn.book" /></a></p>
                         </div>
@@ -145,27 +131,27 @@ Version: 1.0.0 2021-03-01
             <div class="row">
               <div class="col-md-12">
                 <div class="section-title text-center">
-                  <h2>${city.cityName}&nbsp;<spring:message code="lbl.hotel.header" /></h2>
+                  <h2><spring:message code="title.room.header" /></h2>
                 </div>
               </div>
             </div>
             <div class="row">
-              <c:forEach var = "item" items = "${lstHotelPage}">
+              <c:forEach var = "item" items = "${lstRoomPage}">
                 <div class="col-md-4">
                   <div class="hotel-content">
                     <div class="hotel-grid"
-                      style="background-image: url(../../../resources/images/hotelSystem/hotel/${item.imageUrl});">
+                      style="background-image: url(../../../resources/images/hotelSystem/room/${item.roomImgUrl});">
                       <div class="price">
                         <small>${item.getOldPriceFormat()}<spring:message code="lbl.hotel.unit.price" /></small>
                         <small>${item.getNewPriceFormat()}<spring:message code="lbl.hotel.unit.price" /></small>
                       </div>
-                      <a style="cursor: pointer;" class="book-now text-center" onclick="hotelDetail('${item.hotelId}');">
+                      <a style="cursor: pointer;" class="book-now text-center" onclick="roomDetail('${item.roomId}');">
                         <i class="ti-calendar"></i>
                         <spring:message code="btn.book" />
                       </a>
                     </div>
                     <div class="desc">
-                      <h3 style="cursor: pointer;"><a onclick="hotelDetail('${item.hotelId}');">${item.hotelName}</a></h3>
+                      <h3 style="cursor: pointer;"><a onclick="roomDetail('${item.roomId}');">${item.roomDescription}</a></h3>
                       <c:forEach var = "i" begin = "1" end = "5">
                         <c:choose>
                           <c:when test="${i <= item.hotelStar}">
@@ -176,7 +162,7 @@ Version: 1.0.0 2021-03-01
                           </c:otherwise>
                         </c:choose>
                       </c:forEach>
-                      <p title="${item.hotelDescription}" onclick="hotelDetail('${item.hotelId}');">${item.hotelDescription}</p>
+                      <p title="${item.roomDescription}" onclick="hotelDetail('${item.roomId}');">${item.roomDescription}</p>
                     </div>
                   </div>
                 </div>
@@ -225,40 +211,5 @@ Version: 1.0.0 2021-03-01
       </div>
       <!-- END fh5co-page -->
     </div>
-    <!-- END fh5co-wrapper -->
-  
-    <!-- Javascripts -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/jquery-2.1.4.min.js"></script>
-    <!-- Dropdown Menu -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/hoverIntent.js"></script>
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/superfish.js"></script>
-    <!-- Bootstrap -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/bootstrap.min.js"></script>
-    <!-- Waypoints -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/jquery.waypoints.min.js"></script>
-    <!-- Counters -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/jquery.countTo.js"></script>
-    <!-- Stellar Parallax -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/jquery.stellar.min.js"></script>
-    <!-- Date Picker -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/bootstrap-datepicker.min.js"></script>
-    <!-- CS Select -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/classie.js"></script>
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/selectFx.js"></script>
-    <!-- Flexslider -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/jquery.flexslider-min.js"></script>
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/custom.js"></script>
-    <!-- Chat Popup -->
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/popup-chat.min.js"></script>
-    <script type="text/javascript" src="${contextPath}/resources/js/hotelSystem/popup-chat-main.js"></script>
-    <!-- Guest request -->
-    <script src="${contextPath}/resources/js/hotelSystem/action-guest.js"></script>
-    <script>
-    $(window).load(
-      function() {
-    	  document.documentElement.scrollTop = 850;
-      });
-      ClassicEditor.create( document.querySelector( '#editor' ) );
-    </script>
   </body>
 </html>
